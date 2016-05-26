@@ -176,6 +176,42 @@ d3.csv("us-ag-productivity-2004.csv", function (data) {
                     .duration(500)
                     .style("opacity", 0);
             });
+        
+        svg2.selectAll("path")
+            .data(json.features)
+            .enter()
+            .append("path")
+            .attr("d", path)
+            .style("fill", function (d) {
+                //Get data value
+                var value = d.properties.value;
+
+                if (value) {
+                    //If value exists…
+                    return color(value);
+                } else {
+                    //If value is undefined…
+                    return "#ccc";
+                }
+            })
+            .on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("" + d.properties.state + "<br>" + "Total Lost: " + d.value + " dollars" + "<br>" + "Main Target: " + d.state + "<br>" + "Main Target lost: " + d.value + "dollars")
+                    .style("left", (d3.event.pageX + 5) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            });
+        
+        
+        
+        
+        
 
     });
 
