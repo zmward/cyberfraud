@@ -2,6 +2,10 @@
 var w = 650;
 var h = 400;
 
+
+
+
+
 //Define map projection
 var projection = d3.geo.albersUsa()
     .translate([w / 2, h / 2])
@@ -28,7 +32,8 @@ var svg2 = d3.select("body")
     .append("svg")
     .style("width", screen.availWidth / 2)
     .style("height", screen.availHeight / 2)
-    .style("float", "right");
+    .style("float", "right")
+    .style("background", "white");
 
 //Create first pie chart SVG element
 var svg3 = d3.select("body")
@@ -44,7 +49,7 @@ var svg4 = d3.select("body")
     .style("width", screen.availWidth / 4)
     .style("height", screen.availHeight / 4)
     .style("float", "left")
-    .style("background", "red");
+    .style("background", "black");
 
 //Create second pie chart SVG element
 var svg5 = d3.select("body")
@@ -67,54 +72,13 @@ var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-//Load in agriculture data
-d3.csv("us-ag-productivity-2004.csv", function (data) {
+  d3.csv("datasetfor2012.csv", function (data) {
 
     //Set input domain for color scale
     color.domain([
 					d3.min(data, function (d) {
             return d.value;
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         
@@ -171,6 +135,8 @@ d3.csv("us-ag-productivity-2004.csv", function (data) {
                     return "#ccc";
                 }
             })
+        
+        
             .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
@@ -184,7 +150,60 @@ d3.csv("us-ag-productivity-2004.csv", function (data) {
                     .duration(500)
                     .style("opacity", 0);
             });
+        
+             
+             
 
+    });
+
+});
+
+  d3.csv("datasetfor2014.csv", function (data) {
+
+    //Set input domain for color scale
+    color.domain([
+					d3.min(data, function (d) {
+            return d.value;
+        })
+
+
+        
+        , d3.max(data, function (d) {
+            return d.value;
+        })
+				]);
+
+    //Load in GeoJSON data
+    d3.json("us-states.json", function (json) {
+
+        //Merge the ag. data and GeoJSON
+        //Loop through once for each ag. data value
+        for (var i = 0; i < data.length; i++) {
+
+            //Grab state name
+            var dataState = data[i].state;
+
+            //Grab data value, and convert from string to float
+            var dataValue = parseFloat(data[i].value);
+
+            //Find the corresponding state inside the GeoJSON
+            for (var j = 0; j < json.features.length; j++) {
+
+                var jsonState = json.features[j].properties.name;
+
+                if (dataState == jsonState) {
+
+                    //Copy the data value into the JSON
+                    json.features[j].properties.value = dataValue;
+
+                    //Stop looking through the JSON
+                    break;
+
+                }
+            }
+        }
+
+        //Bind data and create one path per GeoJSON feature
         svg2.selectAll("path")
             .data(json.features)
             .enter()
@@ -215,11 +234,7 @@ d3.csv("us-ag-productivity-2004.csv", function (data) {
                     .duration(500)
                     .style("opacity", 0);
             });
-
-
-
-
-
+        
 
     });
 
