@@ -28,8 +28,7 @@ var svg2 = d3.select("body")
     .append("svg")
     .style("width", screen.availWidth / 2)
     .style("height", screen.availHeight / 2)
-    .style("float", "right")
-    .style("background", "red");
+    .style("float", "right");
 
 //Create first pie chart SVG element
 var svg3 = d3.select("body")
@@ -45,7 +44,7 @@ var svg4 = d3.select("body")
     .style("width", screen.availWidth / 4)
     .style("height", screen.availHeight / 4)
     .style("float", "left")
-    .style("background", "black");
+    .style("background", "red");
 
 //Create second pie chart SVG element
 var svg5 = d3.select("body")
@@ -76,6 +75,15 @@ d3.csv("us-ag-productivity-2004.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
+
+
+
+
+
+
+
 
 
 
@@ -176,7 +184,7 @@ d3.csv("us-ag-productivity-2004.csv", function (data) {
                     .duration(500)
                     .style("opacity", 0);
             });
-        
+
         svg2.selectAll("path")
             .data(json.features)
             .enter()
@@ -207,11 +215,11 @@ d3.csv("us-ag-productivity-2004.csv", function (data) {
                     .duration(500)
                     .style("opacity", 0);
             });
-        
-        
-        
-        
-        
+
+
+
+
+
 
     });
 
