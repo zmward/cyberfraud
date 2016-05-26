@@ -28,15 +28,40 @@ var svg2 = d3.select("body")
     .append("svg")
     .style("width", screen.availWidth / 2)
     .style("height", screen.availHeight / 2)
-    .style("float", "right");
+    .style("float", "right")
+    .style("background", "red");
 
 //Create first pie chart SVG element
-/*var svg3 = d3.select("body")
+var svg3 = d3.select("body")
     .append("svg")
-    .attr("width", w / 2)
-    .attr("height", h / 2); */
+    .style("width", screen.availWidth / 4)
+    .style("height", screen.availHeight / 4)
+    .style("float", "left")
+    .style("background", "blue");
 
 //Create second pie chart SVG element
+var svg4 = d3.select("body")
+    .append("svg")
+    .style("width", screen.availWidth / 4)
+    .style("height", screen.availHeight / 4)
+    .style("float", "left")
+    .style("background", "black");
+
+//Create second pie chart SVG element
+var svg5 = d3.select("body")
+    .append("svg")
+    .style("width", screen.availWidth / 4)
+    .style("height", screen.availHeight / 4)
+    .style("float", "right")
+    .style("background", "purple");
+
+//Create second pie chart SVG element
+var svg6 = d3.select("body")
+    .append("svg")
+    .style("width", screen.availWidth / 4)
+    .style("height", screen.availHeight / 4)
+    .style("float", "right")
+    .style("background", "green");
 
 //Define Tooltip
 var tooltip = d3.select("body").append("div")
@@ -51,6 +76,14 @@ d3.csv("us-ag-productivity-2004.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
+
+
+
+
+
+
 
 
 
