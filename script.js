@@ -1,6 +1,6 @@
 //Width and height
-var w = 800;
-var h = 500;
+var w = 650;
+var h = 400;
 
 //Define map projection
 var projection = d3.geo.albersUsa()
@@ -76,6 +76,17 @@ d3.csv("us-ag-productivity-2004.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
+
+
+
+
+
+
+
+
+
 
 
 
