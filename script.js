@@ -24,47 +24,46 @@ var color = d3.scale.quantize()
 //Create first map SVG element
 var svg1 = d3.select("body")
     .append("svg")
-    .style("width", screen.availWidth / 2)
-    .style("height", screen.availHeight / 2)
+    .style("width", screen.width / 2)
+    .style("height", screen.height / 2)
     .style("float", "left");
 
 //Create second map SVG element
 var svg2 = d3.select("body")
     .append("svg")
-    .style("width", screen.availWidth / 2)
-    .style("height", screen.availHeight / 2)
-    .style("float", "right")
-    .style("background", "white");
+    .style("width", screen.width / 2)
+    .style("height", screen.height / 2)
+    .style("float", "right");
 
 //Create first pie chart SVG element
 var svg3 = d3.select("body")
     .append("svg")
-    .style("width", screen.availWidth / 4)
-    .style("height", screen.availHeight / 4)
+    .style("width", screen.width / 4)
+    .style("height", screen.height / 4)
     .style("float", "left")
     .style("background", "blue");
 
 //Create second pie chart SVG element
 var svg4 = d3.select("body")
     .append("svg")
-    .style("width", screen.availWidth / 4)
-    .style("height", screen.availHeight / 4)
+    .style("width", screen.width / 4)
+    .style("height", screen.height / 4)
     .style("float", "left")
     .style("background", "black");
 
 //Create second pie chart SVG element
 var svg5 = d3.select("body")
     .append("svg")
-    .style("width", screen.availWidth / 4)
-    .style("height", screen.availHeight / 4)
+    .style("width", screen.width / 4)
+    .style("height", screen.height / 4)
     .style("float", "right")
     .style("background", "purple");
 
 //Create second pie chart SVG element
 var svg6 = d3.select("body")
     .append("svg")
-    .style("width", screen.availWidth / 4)
-    .style("height", screen.availHeight / 4)
+    .style("width", screen.width / 4)
+    .style("height", screen.height / 4)
     .style("float", "right")
     .style("background", "green");
 
@@ -83,6 +82,9 @@ d3.csv("datasetfor2012.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
+
 
 
 
@@ -183,6 +185,9 @@ d3.csv("datasetfor2014.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
+
 
 
 
