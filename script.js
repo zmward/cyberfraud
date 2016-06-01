@@ -2,6 +2,10 @@
 var w = 650;
 var h = 400;
 
+//Add commas to numbers
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 //Define map projection
 var projection = d3.geo.albersUsa()
@@ -82,6 +86,10 @@ d3.csv("datasetfor2012.csv", function (data) {
 
 
 
+
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -151,7 +159,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + d.properties.value + " dollars" + "<br>" + "Main Target: " + d.properties.MainTarget + "<br>" + "Main Target Loss: " + d.properties.MainTargetLoss + "dollars")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + d.properties.MainTarget + "<br>" + "Main Target Loss: " + d.properties.MainTargetLoss + "dollars")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -175,6 +183,10 @@ d3.csv("datasetfor2014.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
+
+
 
 
 
@@ -241,7 +253,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + d.properties.value + " dollars" + "<br>" + "Main Target: " + d.state + "<br>" + "Main Target Loss: " + d.value + "dollars")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + d.state + "<br>" + "Main Target Loss: " + d.value + "dollars")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
