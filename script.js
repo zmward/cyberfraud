@@ -70,8 +70,8 @@ var tooltip = d3.select("body").append("div")
     .style("opacity", 0);
 
 d3.csv("datasetfor2012.csv", function (data) {
-    
-    
+
+
 
 
     //Set input domain for color scale
@@ -79,6 +79,8 @@ d3.csv("datasetfor2012.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
 
         
         , d3.max(data, function (d) {
@@ -95,7 +97,7 @@ d3.csv("datasetfor2012.csv", function (data) {
 
             //Grab state name
             var dataState = data[i].state;
-            
+
             //Grabing Main Target and Main Target Loss
             var dataMainTarget = parseFloat(data[i].MainTarget);
 
@@ -133,7 +135,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 var value = d.properties.value;
                 var state = d.properties.state;
                 var MainTarget = d.properties.MainTarget;
-            
+
 
                 if (value) {
                     //If value exists…
@@ -149,7 +151,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Lost: " + d.properties.value + " dollars" + "<br>" + "Main Target: " + d.properties.MainTarget + "<br>" + "Main Target lost: " + d.properties.MainTargetLoss + "dollars")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + d.properties.value + " dollars" + "<br>" + "Main Target: " + d.properties.MainTarget + "<br>" + "Main Target Loss: " + d.properties.MainTargetLoss + "dollars")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -173,6 +175,8 @@ d3.csv("datasetfor2014.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
 
 
 
@@ -237,7 +241,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Lost: " + d.properties.value + " dollars" + "<br>" + "Main Target: " + d.state + "<br>" + "Main Target lost: " + d.value + "dollars")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + d.properties.value + " dollars" + "<br>" + "Main Target: " + d.state + "<br>" + "Main Target Loss: " + d.value + "dollars")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
