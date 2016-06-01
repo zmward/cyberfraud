@@ -70,15 +70,15 @@ var tooltip = d3.select("body").append("div")
     .style("opacity", 0);
 
 d3.csv("datasetfor2012.csv", function (data) {
+    
+    
+
 
     //Set input domain for color scale
     color.domain([
 					d3.min(data, function (d) {
             return d.value;
         })
-
-
-
 
         
         , d3.max(data, function (d) {
@@ -95,6 +95,9 @@ d3.csv("datasetfor2012.csv", function (data) {
 
             //Grab state name
             var dataState = data[i].state;
+            
+            //Grabing Main Target and Main Target Loss
+            var dataMainTarget = parseFloat(data[i].MainTarget);
 
             //Grab data value, and convert from string to float
             var dataValue = parseFloat(data[i].value);
@@ -108,6 +111,8 @@ d3.csv("datasetfor2012.csv", function (data) {
 
                     //Copy the data value into the JSON
                     json.features[j].properties.value = dataValue;
+                    json.features[i].properties.state = dataState;
+                    json.features[j].properties.MainTarget = dataMainTarget;
 
                     //Stop looking through the JSON
                     break;
@@ -126,6 +131,9 @@ d3.csv("datasetfor2012.csv", function (data) {
             .style("fill", function (d) {
                 //Get data value
                 var value = d.properties.value;
+                var state = d.properties.state;
+                var MainTarget = d.properties.MainTarget;
+            
 
                 if (value) {
                     //If value exists…
@@ -141,7 +149,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Lost: " + d.value + " dollars" + "<br>" + "Main Target: " + d.state + "<br>" + "Main Target lost: " + d.value + "dollars")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Lost: " + d.properties.value + " dollars" + "<br>" + "Main Target: " + d.properties.MainTarget + "<br>" + "Main Target lost: " + d.properties.MainTargetLoss + "dollars")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -197,6 +205,7 @@ d3.csv("datasetfor2014.csv", function (data) {
 
                     //Copy the data value into the JSON
                     json.features[j].properties.value = dataValue;
+                    json.features[i].properties.state = dataState;
 
                     //Stop looking through the JSON
                     break;
@@ -228,7 +237,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Lost: " + d.value + " dollars" + "<br>" + "Main Target: " + d.state + "<br>" + "Main Target lost: " + d.value + "dollars")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Lost: " + d.properties.value + " dollars" + "<br>" + "Main Target: " + d.state + "<br>" + "Main Target lost: " + d.value + "dollars")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
