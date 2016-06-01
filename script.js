@@ -7,6 +7,53 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
+function targetType(x) {
+    target = x;
+  
+    if (target == "M1") {
+     return ("Males Under 20");
+    }
+    else if (target == "M2") {
+     return ("Males 20-29");
+  }
+    else if (target == "M3") {
+     return ("Males 30-39");
+  }
+    else if (target == "M4") {
+     return ("Males 40-49");
+  }
+    else if (target == "M5") {
+     return ("Males 50-59");
+  }
+    else if (target == "M6") {
+     return ("Males 60 & Over");
+  }
+    else if (target == "F1") {
+     return ("Females Under 20");
+    }
+    else if (target == "F2") {
+     return ("Females 20-29");
+  }
+    else if (target == "F3") {
+     return ("Females 30-39");
+  }
+    else if (target == "F4") {
+     return ("Females 40-49");
+  }
+    else if (target == "F5") {
+     return ("Females 50-59");
+  }
+    else if (target == "F6") {
+     return ("Females 60 & Over");
+  }
+    
+  else {
+    return ("Error");
+  }
+    
+} 
+
+
 //Define map projection
 var projection = d3.geo.albersUsa()
     .translate([w / 2, h / 2])
@@ -86,12 +133,6 @@ d3.csv("datasetfor2012.csv", function (data) {
 
 
 
-
-
-
-
-
-
         
         , d3.max(data, function (d) {
             return d.value;
@@ -109,10 +150,11 @@ d3.csv("datasetfor2012.csv", function (data) {
             var dataState = data[i].state;
 
             //Grabing Main Target and Main Target Loss
-            var dataMainTarget = parseFloat(data[i].MainTarget);
+            var dataMainTarget = data[i].MainTarget;
 
             //Grab data value, and convert from string to float
             var dataValue = parseFloat(data[i].value);
+            var dataMainTargetLoss = parseFloat(data[i].MainTargetLoss);
 
             //Find the corresponding state inside the GeoJSON
             for (var j = 0; j < json.features.length; j++) {
@@ -124,7 +166,8 @@ d3.csv("datasetfor2012.csv", function (data) {
                     //Copy the data value into the JSON
                     json.features[j].properties.value = dataValue;
                     json.features[i].properties.state = dataState;
-                    json.features[j].properties.MainTarget = dataMainTarget;
+                    json.features[i].properties.MainTarget = dataMainTarget;
+                    json.features[i].properties.MainTargetLoss = dataMainTargetLoss;
 
                     //Stop looking through the JSON
                     break;
@@ -161,7 +204,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + d.properties.MainTarget + "<br>" + "Main Target Loss: " + d.properties.MainTargetLoss + "dollars")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + targetType(d.properties.MainTarget) + "<br>" + "Main Target Loss: $" + numberWithCommas(d.properties.MainTargetLoss) + "")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -187,17 +230,6 @@ d3.csv("datasetfor2014.csv", function (data) {
         })
 
 
-
-
-
-
-
-
-
-
-
-
-
         
         , d3.max(data, function (d) {
             return d.value;
@@ -213,9 +245,12 @@ d3.csv("datasetfor2014.csv", function (data) {
 
             //Grab state name
             var dataState = data[i].state;
+            //Grabing Main Target and Main Target Loss
+            var dataMainTarget = data[i].MainTarget;
 
             //Grab data value, and convert from string to float
             var dataValue = parseFloat(data[i].value);
+            var dataMainTargetLoss = parseFloat(data[i].MainTargetLoss);
 
             //Find the corresponding state inside the GeoJSON
             for (var j = 0; j < json.features.length; j++) {
@@ -227,6 +262,8 @@ d3.csv("datasetfor2014.csv", function (data) {
                     //Copy the data value into the JSON
                     json.features[j].properties.value = dataValue;
                     json.features[i].properties.state = dataState;
+                    json.features[i].properties.MainTarget = dataMainTarget;
+                    json.features[i].properties.MainTargetLoss = dataMainTargetLoss;
 
                     //Stop looking through the JSON
                     break;
@@ -258,7 +295,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + d.state + "<br>" + "Main Target Loss: " + d.value + "dollars")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + targetType(d.properties.MainTarget) + "<br>" + "Main Target Loss: $" + numberWithCommas(d.properties.MainTargetLoss) + "")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
