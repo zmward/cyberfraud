@@ -46,3 +46,9 @@ text {
     width: 50%;
     height: 50%;
 }
+
+.state-boundary {
+    fill: none;
+    stroke: black;
+    stroke-width: 0.5px;
+}

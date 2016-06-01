@@ -3,9 +3,6 @@ var w = 650;
 var h = 400;
 
 
-
-
-
 //Define map projection
 var projection = d3.geo.albersUsa()
     .translate([w / 2, h / 2])
@@ -72,13 +69,15 @@ var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("opacity", 0);
 
-  d3.csv("datasetfor2012.csv", function (data) {
+d3.csv("datasetfor2012.csv", function (data) {
 
     //Set input domain for color scale
     color.domain([
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
 
 
         
@@ -122,6 +121,7 @@ var tooltip = d3.select("body").append("div")
             .data(json.features)
             .enter()
             .append("path")
+            .attr("class", "state-boundary")
             .attr("d", path)
             .style("fill", function (d) {
                 //Get data value
@@ -135,9 +135,9 @@ var tooltip = d3.select("body").append("div")
                     return "#ccc";
                 }
             })
-        
-        
-            .on("mouseover", function (d) {
+
+
+        .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -150,21 +150,23 @@ var tooltip = d3.select("body").append("div")
                     .duration(500)
                     .style("opacity", 0);
             });
-        
-             
-             
+
+
+
 
     });
 
 });
 
-  d3.csv("datasetfor2014.csv", function (data) {
+d3.csv("datasetfor2014.csv", function (data) {
 
     //Set input domain for color scale
     color.domain([
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
 
 
         
@@ -208,6 +210,7 @@ var tooltip = d3.select("body").append("div")
             .data(json.features)
             .enter()
             .append("path")
+            .attr("class", "state-boundary")
             .attr("d", path)
             .style("fill", function (d) {
                 //Get data value
@@ -234,7 +237,7 @@ var tooltip = d3.select("body").append("div")
                     .duration(500)
                     .style("opacity", 0);
             });
-        
+
 
     });
 
