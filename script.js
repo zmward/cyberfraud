@@ -121,6 +121,15 @@ d3.csv("datasetfor2012.csv", function (data) {
 
 
 
+
+
+
+
+
+
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -143,6 +152,7 @@ d3.csv("datasetfor2012.csv", function (data) {
             //Grab data value, and convert from string to float
             var dataValue = parseFloat(data[i].value);
             var dataMainTargetLoss = parseFloat(data[i].MainTargetLoss);
+            var dataPopulation = parseFloat(data[i].Population);
 
             //Find the corresponding state inside the GeoJSON
             for (var j = 0; j < json.features.length; j++) {
@@ -156,6 +166,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                     json.features[i].properties.state = dataState;
                     json.features[i].properties.MainTarget = dataMainTarget;
                     json.features[i].properties.MainTargetLoss = dataMainTargetLoss;
+                    json.features[i].properties.Population = dataPopulation;
 
                     //Stop looking through the JSON
                     break;
@@ -176,6 +187,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 var value = d.properties.value;
                 var state = d.properties.state;
                 var MainTarget = d.properties.MainTarget;
+                var Population = d.properties.Population;
 
 
                 if (value) {
@@ -192,7 +204,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + targetType(d.properties.MainTarget) + "<br>" + "Main Target Loss: $" + numberWithCommas(d.properties.MainTargetLoss) + "")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + targetType(d.properties.MainTarget) + "<br>" + "Main Target Loss: $" + numberWithCommas(d.properties.MainTargetLoss) + "<br>" + "Loss per capita: $" + (d.properties.value / d.properties.Population).toFixed(2) + "")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -219,6 +231,15 @@ d3.csv("datasetfor2014.csv", function (data) {
 
 
 
+
+
+
+
+
+
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -240,6 +261,7 @@ d3.csv("datasetfor2014.csv", function (data) {
             //Grab data value, and convert from string to float
             var dataValue = parseFloat(data[i].value);
             var dataMainTargetLoss = parseFloat(data[i].MainTargetLoss);
+            var dataPopulation = parseFloat(data[i].Population);
 
             //Find the corresponding state inside the GeoJSON
             for (var j = 0; j < json.features.length; j++) {
@@ -253,6 +275,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                     json.features[i].properties.state = dataState;
                     json.features[i].properties.MainTarget = dataMainTarget;
                     json.features[i].properties.MainTargetLoss = dataMainTargetLoss;
+                    json.features[i].properties.Population = dataPopulation;
 
                     //Stop looking through the JSON
                     break;
@@ -284,7 +307,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + targetType(d.properties.MainTarget) + "<br>" + "Main Target Loss: $" + numberWithCommas(d.properties.MainTargetLoss) + "")
+                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + targetType(d.properties.MainTarget) + "<br>" + "Main Target Loss: $" + numberWithCommas(d.properties.MainTargetLoss) + "<br>" + "Loss per capita: $" + (d.properties.value / d.properties.Population).toFixed(2) + "")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
