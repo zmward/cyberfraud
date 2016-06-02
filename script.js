@@ -1,6 +1,6 @@
 //Width and height
-var w = 650;
-var h = 400;
+var w = 600;
+var h = 350;
 
 //Add commas to numbers
 function numberWithCommas(x) {
@@ -57,46 +57,48 @@ var color = d3.scale.quantize()
 //Colors taken from colorbrewer.js, included in the D3 download
 
 //Create first map SVG element
-var svg1 = d3.select("body")
+var svg1 = d3.select("#section31")
     .append("svg")
-    .style("width", screen.width / 2)
-    .style("height", screen.height / 2)
+    .style("height", 350)
+    .style("width", 600)
+    .style("background", "white")
     .style("float", "left");
 
 //Create second map SVG element
-var svg2 = d3.select("body")
+var svg2 = d3.select("#section32")
     .append("svg")
-    .style("width", screen.width / 2)
-    .style("height", screen.height / 2)
-    .style("float", "right");
+    .style("height", 350)
+    .style("width", 600)
+    .style("float", "right")
+    .style("background", "white");
 
-////Create first pie chart SVG element
-var svg3 = d3.select("body")
+//Create first pie chart SVG element
+var svg3 = d3.select("#section311")
     .append("svg")
-    .style("width", screen.width / 4)
-    .style("height", screen.height / 4)
-    .style("float", "left");
-
-//Create second pie chart SVG element
-var svg4 = d3.select("body")
-    .append("svg")
-    .style("width", screen.width / 4)
-    .style("height", screen.height / 4)
-    .style("float", "left");
+    .style("height", 200)
+    .style("width", 300)
+    .style("background", "white");
 
 //Create second pie chart SVG element
-var svg5 = d3.select("body")
+var svg4 = d3.select("#section312")
     .append("svg")
-    .style("width", screen.width / 4)
-    .style("height", screen.height / 4)
-    .style("float", "right");
+    .style("height", 200)
+    .style("width", 300)
+    .style("background", "white");
 
 //Create second pie chart SVG element
-var svg6 = d3.select("body")
+var svg5 = d3.select("#section321")
     .append("svg")
-    .style("width", screen.width / 4)
-    .style("height", screen.height / 4)
-    .style("float", "right");
+    .style("height", 200)
+    .style("width", 300)
+    .style("background", "white");
+
+//Create second pie chart SVG element
+var svg6 = d3.select("#section322")
+    .append("svg")
+    .style("height", 200)
+    .style("width", 300)
+    .style("background", "white");
 
 //Define Tooltip
 var tooltip = d3.select("body").append("div")
