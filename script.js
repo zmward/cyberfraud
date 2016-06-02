@@ -118,6 +118,9 @@ d3.csv("datasetfor2012.csv", function (data) {
 
 
 
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -215,6 +218,9 @@ d3.csv("datasetfor2014.csv", function (data) {
     color.domain([d3.min(data, function (d) {
             return d.value;
         })
+
+
+
 
 
 
@@ -356,7 +362,7 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age + "   $" + d.data.total + " Million";
+            return d.data.age + "   $" + numberWithCommas(d.data.total);
         });
 });
 
@@ -387,7 +393,7 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age + "   $" + d.data.total + " Million";
+            return d.data.age + "   $" + numberWithCommas(d.data.total);
         });
 });
 
@@ -419,7 +425,7 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age + "   $" + d.data.total + " Million";
+            return d.data.age + "   $" + numberWithCommas(d.data.total);
         });
 });
 
@@ -449,6 +455,6 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age + "   $" + d.data.total + " Million";
+            return d.data.age + "   $" + numberWithCommas(d.data.total);
         });
 });
