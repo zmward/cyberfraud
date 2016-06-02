@@ -52,3 +52,12 @@ text {
     stroke: black;
     stroke-width: 0.5px;
 }
+
+.arc text {
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
+}

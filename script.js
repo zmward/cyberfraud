@@ -41,6 +41,9 @@ function targetType(x) {
 }
 
 
+
+
+
 //Define map projection
 var projection = d3.geo.albersUsa()
     .translate([w / 2, h / 2])
@@ -69,7 +72,7 @@ var svg2 = d3.select("body")
     .style("height", screen.height / 2)
     .style("float", "right");
 
-//Create first pie chart SVG element
+////Create first pie chart SVG element
 var svg3 = d3.select("body")
     .append("svg")
     .style("width", screen.width / 4)
@@ -116,21 +119,7 @@ d3.csv("datasetfor2012.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
+      
         , d3.max(data, function (d) {
             return d.value;
         })
@@ -224,23 +213,9 @@ d3.csv("datasetfor2012.csv", function (data) {
 d3.csv("datasetfor2014.csv", function (data) {
 
     //Set input domain for color scale
-    color.domain([
-					d3.min(data, function (d) {
+    color.domain([d3.min(data, function (d) {
             return d.value;
-        })
-
-
-
-
-
-
-
-
-
-
-
-
-        
+        })       
         , d3.max(data, function (d) {
             return d.value;
         })
@@ -321,3 +296,127 @@ d3.csv("datasetfor2014.csv", function (data) {
     });
 
 });
+
+///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
+
+var color = d3.scale.ordinal()
+    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+var radius = 125;
+
+var arc = d3.svg.arc()
+    .outerRadius(radius - 10)
+    .innerRadius(0);
+
+var labelArc = d3.svg.arc()
+    .outerRadius(radius - 40)
+    .innerRadius(radius - 40);
+
+var pie = d3.layout.pie()
+    .sort(null)
+    .value(function(d) { return d.total; });
+
+
+
+function type(d) {
+  d.total = +d.total;
+  return d;
+}
+
+
+d3.csv("datasetfor2012female.csv", type, function(error, data) {
+  if (error) throw error;
+     
+
+  var g = svg3.selectAll(".arc")
+      .data(pie(data))
+    .enter().append("g")
+
+    .attr("class", "arc");
+    
+
+  g.append("path")
+ 
+      .attr("d", arc)
+      .style("fill", function(d) { return color(d.data.age); });
+        
+
+  g.append("text")
+      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .text(function(d) { return d.data.age + "   $" + d.data.total + " Million"; });
+}); 
+
+///////////////////////////////// 2012 MALE PIE CHART ///////////////////////////////////////
+
+
+d3.csv("datasetfor2012male.csv", type, function(error, data) {
+  if (error) throw error;
+    
+
+  var g = svg4.selectAll(".arc")
+      .data(pie(data))
+    .enter().append("g")
+    .attr("class", "arc");
+    
+
+  g.append("path")
+   .attr("d", arc)
+   .style("fill", function(d) { return color(d.data.age); });
+        
+
+  g.append("text")
+      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .text(function(d) { return d.data.age + "   $" + d.data.total + " Million"; });
+}); 
+
+
+///////////////////////////////// 2014 FEMALE PIE CHART ///////////////////////////////////////
+
+
+d3.csv("datasetfor2014female.csv", type, function(error, data) {
+  if (error) throw error;
+   
+
+  var g = svg5.selectAll(".arc")
+      .data(pie(data))
+    .enter().append("g")
+    .attr("class", "arc");
+    
+
+  g.append("path")
+      .attr("d", arc)
+      .style("fill", function(d) { return color(d.data.age); });
+        
+
+  g.append("text")
+      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .text(function(d) { return d.data.age + "   $" + d.data.total + " Million"; });
+}); 
+
+///////////////////////////////// 2014 MALE PIE CHART ///////////////////////////////////////
+
+d3.csv("datasetfor2014male.csv", type, function(error, data) {
+  if (error) throw error;
+
+
+    var g = svg6.selectAll(".arc")
+      .data(pie(data))
+    .enter().append("g") 
+    .attr("class", "arc");
+    
+
+  g.append("path")
+      .attr("d", arc)
+      .style("fill", function(d) { return color(d.data.age); });
+        
+
+  g.append("text")
+      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+      .attr("dy", ".35em")
+      .text(function(d) { return d.data.age + "   $" + d.data.total + " Million"; });
+}); 
+
+
