@@ -1,3 +1,75 @@
+#header {
+    background-color:white;
+    color:white;
+    text-align:center;
+    padding:5px;
+}
+
+#section1 {
+    
+    height:550px;
+    width:600px;
+    float:left;
+    background-color:greenyellow;
+}
+
+#section2 {
+    
+    height:550px;
+    width:600px;
+    float:left; 
+    background-color:yellow;
+}
+
+#section31 {
+    height:350px;
+    width:600px;
+    background-color:red;
+    float: left
+}
+
+#section32 {
+    height:350px;
+    width:600px;
+    background-color:bisque;
+}
+
+#section311 {
+    height:200px;
+    width:300px;
+    background-color:green;
+    float: 
+}
+
+#section312 {
+    height:200px;
+    width:300px;
+    background-color:white;
+    float:right
+}
+
+#section321 {
+    height:200px;
+    width:300px;
+    background-color:rebeccapurple;
+    float: left
+}
+
+#section322 {
+    height:200px;
+    width:300px;
+    background-color:brown;
+    float:right
+}
+
+
+#section4 {
+    padding:10px;
+    background-color:white;
+    text-align:left;
+    width:1200px;
+}
+
 body {
     font-family: sans-serif;
     color: #000000;
@@ -42,22 +114,10 @@ text {
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-.svg1 {
-    width: 50%;
-    height: 50%;
-}
+
 
 .state-boundary {
     fill: none;
     stroke: black;
     stroke-width: 0.5px;
-}
-
-.arc text {
-  font: 10px sans-serif;
-  text-anchor: middle;
-}
-
-.arc path {
-  stroke: #fff;
 }
