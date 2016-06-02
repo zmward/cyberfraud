@@ -9,49 +9,36 @@ function numberWithCommas(x) {
 
 function targetType(x) {
     target = x;
-  
+
     if (target == "M1") {
-     return ("Males Under 20");
+        return ("Males Under 20");
+    } else if (target == "M2") {
+        return ("Males 20-29");
+    } else if (target == "M3") {
+        return ("Males 30-39");
+    } else if (target == "M4") {
+        return ("Males 40-49");
+    } else if (target == "M5") {
+        return ("Males 50-59");
+    } else if (target == "M6") {
+        return ("Males 60 & Over");
+    } else if (target == "F1") {
+        return ("Females Under 20");
+    } else if (target == "F2") {
+        return ("Females 20-29");
+    } else if (target == "F3") {
+        return ("Females 30-39");
+    } else if (target == "F4") {
+        return ("Females 40-49");
+    } else if (target == "F5") {
+        return ("Females 50-59");
+    } else if (target == "F6") {
+        return ("Females 60 & Over");
+    } else {
+        return ("Error");
     }
-    else if (target == "M2") {
-     return ("Males 20-29");
-  }
-    else if (target == "M3") {
-     return ("Males 30-39");
-  }
-    else if (target == "M4") {
-     return ("Males 40-49");
-  }
-    else if (target == "M5") {
-     return ("Males 50-59");
-  }
-    else if (target == "M6") {
-     return ("Males 60 & Over");
-  }
-    else if (target == "F1") {
-     return ("Females Under 20");
-    }
-    else if (target == "F2") {
-     return ("Females 20-29");
-  }
-    else if (target == "F3") {
-     return ("Females 30-39");
-  }
-    else if (target == "F4") {
-     return ("Females 40-49");
-  }
-    else if (target == "F5") {
-     return ("Females 50-59");
-  }
-    else if (target == "F6") {
-     return ("Females 60 & Over");
-  }
-    
-  else {
-    return ("Error");
-  }
-    
-} 
+
+}
 
 
 //Define map projection
@@ -129,6 +116,7 @@ d3.csv("datasetfor2012.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
 
 
 
@@ -228,6 +216,7 @@ d3.csv("datasetfor2014.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
 
 
         
