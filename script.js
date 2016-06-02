@@ -77,32 +77,28 @@ var svg3 = d3.select("body")
     .append("svg")
     .style("width", screen.width / 4)
     .style("height", screen.height / 4)
-    .style("float", "left")
-    .style("background", "blue");
+    .style("float", "left");
 
 //Create second pie chart SVG element
 var svg4 = d3.select("body")
     .append("svg")
     .style("width", screen.width / 4)
     .style("height", screen.height / 4)
-    .style("float", "left")
-    .style("background", "black");
+    .style("float", "left");
 
 //Create second pie chart SVG element
 var svg5 = d3.select("body")
     .append("svg")
     .style("width", screen.width / 4)
     .style("height", screen.height / 4)
-    .style("float", "right")
-    .style("background", "purple");
+    .style("float", "right");
 
 //Create second pie chart SVG element
 var svg6 = d3.select("body")
     .append("svg")
     .style("width", screen.width / 4)
     .style("height", screen.height / 4)
-    .style("float", "right")
-    .style("background", "green");
+    .style("float", "right");
 
 //Define Tooltip
 var tooltip = d3.select("body").append("div")
@@ -119,7 +115,10 @@ d3.csv("datasetfor2012.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
-      
+
+
+
+        
         , d3.max(data, function (d) {
             return d.value;
         })
@@ -215,7 +214,14 @@ d3.csv("datasetfor2014.csv", function (data) {
     //Set input domain for color scale
     color.domain([d3.min(data, function (d) {
             return d.value;
-        })       
+        })
+
+
+
+
+
+
+        
         , d3.max(data, function (d) {
             return d.value;
         })
@@ -305,7 +311,7 @@ var color = d3.scale.ordinal()
 var radius = 125;
 
 var arc = d3.svg.arc()
-    .outerRadius(radius - 10)
+    .outerRadius(radius - 30)
     .innerRadius(0);
 
 var labelArc = d3.svg.arc()
@@ -314,109 +320,135 @@ var labelArc = d3.svg.arc()
 
 var pie = d3.layout.pie()
     .sort(null)
-    .value(function(d) { return d.total; });
-
+    .value(function (d) {
+        return d.total;
+    });
 
 
 function type(d) {
-  d.total = +d.total;
-  return d;
+    d.total = +d.total;
+    return d;
 }
 
 
-d3.csv("datasetfor2012female.csv", type, function(error, data) {
-  if (error) throw error;
-     
+d3.csv("datasetfor2012female.csv", type, function (error, data) {
+    if (error) throw error;
 
-  var g = svg3.selectAll(".arc")
-      .data(pie(data))
-    .enter().append("g")
 
-    .attr("class", "arc");
-    
+    var g = svg3.selectAll(".arc")
+        .data(pie(data))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
 
-  g.append("path")
- 
-      .attr("d", arc)
-      .style("fill", function(d) { return color(d.data.age); });
-        
 
-  g.append("text")
-      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-      .attr("dy", ".35em")
-      .text(function(d) { return d.data.age + "   $" + d.data.total + " Million"; });
-}); 
+    g.append("path")
+
+    .attr("d", arc)
+        .style("fill", function (d) {
+            return color(d.data.age);
+        });
+
+
+    g.append("text")
+        .attr("transform", function (d) {
+            return "translate(" + labelArc.centroid(d) + ")";
+        })
+        .attr("dy", ".35em")
+        .text(function (d) {
+            return d.data.age + "   $" + d.data.total + " Million";
+        });
+});
 
 ///////////////////////////////// 2012 MALE PIE CHART ///////////////////////////////////////
 
 
-d3.csv("datasetfor2012male.csv", type, function(error, data) {
-  if (error) throw error;
-    
+d3.csv("datasetfor2012male.csv", type, function (error, data) {
+    if (error) throw error;
 
-  var g = svg4.selectAll(".arc")
-      .data(pie(data))
-    .enter().append("g")
-    .attr("class", "arc");
-    
 
-  g.append("path")
-   .attr("d", arc)
-   .style("fill", function(d) { return color(d.data.age); });
-        
+    var g = svg4.selectAll(".arc")
+        .data(pie(data))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
 
-  g.append("text")
-      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-      .attr("dy", ".35em")
-      .text(function(d) { return d.data.age + "   $" + d.data.total + " Million"; });
-}); 
+
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color(d.data.age);
+        });
+
+
+    g.append("text")
+        .attr("transform", function (d) {
+            return "translate(" + labelArc.centroid(d) + ")";
+        })
+        .attr("dy", ".35em")
+        .text(function (d) {
+            return d.data.age + "   $" + d.data.total + " Million";
+        });
+});
 
 
 ///////////////////////////////// 2014 FEMALE PIE CHART ///////////////////////////////////////
 
 
-d3.csv("datasetfor2014female.csv", type, function(error, data) {
-  if (error) throw error;
-   
+d3.csv("datasetfor2014female.csv", type, function (error, data) {
+    if (error) throw error;
 
-  var g = svg5.selectAll(".arc")
-      .data(pie(data))
-    .enter().append("g")
-    .attr("class", "arc");
-    
 
-  g.append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return color(d.data.age); });
-        
+    var g = svg5.selectAll(".arc")
+        .data(pie(data))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
 
-  g.append("text")
-      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-      .attr("dy", ".35em")
-      .text(function(d) { return d.data.age + "   $" + d.data.total + " Million"; });
-}); 
+
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color(d.data.age);
+        });
+
+
+    g.append("text")
+        .attr("transform", function (d) {
+            return "translate(" + labelArc.centroid(d) + ")";
+        })
+        .attr("dy", ".35em")
+        .text(function (d) {
+            return d.data.age + "   $" + d.data.total + " Million";
+        });
+});
 
 ///////////////////////////////// 2014 MALE PIE CHART ///////////////////////////////////////
 
-d3.csv("datasetfor2014male.csv", type, function(error, data) {
-  if (error) throw error;
+d3.csv("datasetfor2014male.csv", type, function (error, data) {
+    if (error) throw error;
 
 
     var g = svg6.selectAll(".arc")
-      .data(pie(data))
-    .enter().append("g") 
-    .attr("class", "arc");
-    
-
-  g.append("path")
-      .attr("d", arc)
-      .style("fill", function(d) { return color(d.data.age); });
-        
-
-  g.append("text")
-      .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
-      .attr("dy", ".35em")
-      .text(function(d) { return d.data.age + "   $" + d.data.total + " Million"; });
-}); 
+        .data(pie(data))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
 
 
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color(d.data.age);
+        });
+
+
+    g.append("text")
+        .attr("transform", function (d) {
+            return "translate(" + labelArc.centroid(d) + ")";
+        })
+        .attr("dy", ".35em")
+        .text(function (d) {
+            return d.data.age + "   $" + d.data.total + " Million";
+        });
+});
