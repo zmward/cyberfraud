@@ -42,8 +42,6 @@ function targetType(x) {
 
 
 
-
-
 //Define map projection
 var projection = d3.geo.albersUsa()
     .translate([w / 2, h / 2])
@@ -107,18 +105,11 @@ var tooltip = d3.select("body").append("div")
 
 d3.csv("datasetfor2012.csv", function (data) {
 
-
-
-
     //Set input domain for color scale
     color.domain([
 					d3.min(data, function (d) {
             return d.value;
         })
-
-
-
-
 
 
         
@@ -206,8 +197,6 @@ d3.csv("datasetfor2012.csv", function (data) {
             });
 
 
-
-
     });
 
 });
@@ -218,13 +207,6 @@ d3.csv("datasetfor2014.csv", function (data) {
     color.domain([d3.min(data, function (d) {
             return d.value;
         })
-
-
-
-
-
-
-
 
 
         
@@ -311,7 +293,7 @@ d3.csv("datasetfor2014.csv", function (data) {
 
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
-var color = d3.scale.ordinal()
+var color1 = d3.scale.ordinal()
     .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
 
 var radius = 125;
@@ -349,10 +331,9 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
 
 
     g.append("path")
-
-    .attr("d", arc)
+        .attr("d", arc)
         .style("fill", function (d) {
-            return color(d.data.age);
+            return color1(d.data.age);
         });
 
 
@@ -383,7 +364,7 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
     g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-            return color(d.data.age);
+            return color1(d.data.age);
         });
 
 
@@ -415,7 +396,7 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
     g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-            return color(d.data.age);
+            return color1(d.data.age);
         });
 
 
@@ -445,7 +426,7 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
     g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-            return color(d.data.age);
+            return color1(d.data.age);
         });
 
 
