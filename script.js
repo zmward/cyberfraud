@@ -186,7 +186,7 @@ d3.csv("datasetfor2012.csv", function (data) {
 
         .on("mouseover", function (d) {
                 tooltip.transition()
-                    .duration(200)
+                    .duration(0)
                     .style("opacity", .9);
                 tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + targetType(d.properties.MainTarget) + "<br>" + "Main Target Loss: $" + numberWithCommas(d.properties.MainTargetLoss) + "<br>" + "Loss per capita: $" + (d.properties.value / d.properties.Population).toFixed(2) + "")
                     .style("left", (d3.event.pageX + 5) + "px")
