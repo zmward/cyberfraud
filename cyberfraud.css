@@ -2,72 +2,107 @@
     background-color:white;
     color:white;
     text-align:center;
-    padding:5px;
 }
-
-#section1 {
-    
-    height:550px;
+#header2 {
+    background-color:white;
+    color:white;
+    text-align:center;
     width:600px;
     float:left;
-    background-color:greenyellow;
+}
+#header3 {
+    background-color:white;
+    color:white;
+    text-align:center;
+    width:600px;
+    float:left;
+}
+#section1 {
+    
+    height:600px;
+    width:680px;
+    float:left;
+    background-color:white;
 }
 
 #section2 {
-    
-    height:550px;
+    height:600px;
     width:600px;
     float:left; 
-    background-color:yellow;
+    background-color:white;
+    text-align:center;
 }
+
 
 #section31 {
     height:350px;
     width:600px;
-    background-color:red;
+    background-color:white;
     float: left
 }
 
 #section32 {
     height:350px;
     width:600px;
-    background-color:bisque;
+    background-color:white;
+    float: left
+}
+
+#section33 {
+    height:350px;
+    width:80px;
+    background-color:gainsboro;
+    float: left
 }
 
 #section311 {
     height:200px;
     width:300px;
-    background-color:green;
-    float: 
+    background-color:white;
+    float: left
 }
 
 #section312 {
     height:200px;
     width:300px;
     background-color:white;
-    float:right
+    float:left
 }
 
+#section313 {
+    height:200px;
+    width:80px;
+    background-color:greenyellow;
+    float:left
+}
 #section321 {
     height:200px;
     width:300px;
-    background-color:rebeccapurple;
+    background-color:white;
     float: left
 }
 
 #section322 {
     height:200px;
     width:300px;
-    background-color:brown;
+    background-color:white;
     float:right
 }
 
+#section7 {
+    padding:10px;
+    background-color:white;
+    text-align:center;
+    width:1300px;
+    float: left
+}
 
-#section4 {
+#section6 {
     padding:10px;
     background-color:white;
     text-align:left;
-    width:1200px;
+    width:800px;
+    float: left
 }
 
 body {
