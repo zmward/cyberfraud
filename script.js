@@ -321,6 +321,17 @@ function type(d) {
 }
 
 
+function tweenPie(b) {
+            b.innerRadius = 0;
+            var i = d3.interpolate({
+                startAngle: 0,
+                endAngle: 0
+            }, b);
+            return function(t) {
+                return arc(i(t));
+            };
+        }
+
 d3.csv("datasetfor2012female.csv", type, function (error, data) {
     if (error) throw error;
 
@@ -335,8 +346,11 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
     g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-            return color1(d.data.age);
-        });
+        return color1(d.data.age);})
+        .transition()
+        .ease("spring")
+        .duration(1000)
+        .attrTween("d", tweenPie);
 
 
     g.append("text")
@@ -345,7 +359,8 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age + "   $" + numberWithCommas(d.data.total);
+         //   return d.data.age + "   $" + numberWithCommas(d.data.total)
+            return d.data.age;
         });
 });
 
@@ -363,11 +378,14 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
 
 
-    g.append("path")
+      g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-            return color1(d.data.age);
-        });
+        return color1(d.data.age);})
+        .transition()
+        .ease("spring")
+        .duration(1000)
+        .attrTween("d", tweenPie);
 
 
     g.append("text")
@@ -376,7 +394,7 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age + "   $" + numberWithCommas(d.data.total);
+            return d.data.age;
         });
 });
 
@@ -395,11 +413,14 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
 
 
-    g.append("path")
+      g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-            return color1(d.data.age);
-        });
+        return color1(d.data.age);})
+        .transition()
+        .ease("spring")
+        .duration(1000)
+        .attrTween("d", tweenPie);
 
 
     g.append("text")
@@ -408,7 +429,7 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age + "   $" + numberWithCommas(d.data.total);
+            return d.data.age;
         });
 });
 
@@ -425,11 +446,14 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
 
 
-    g.append("path")
+      g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-            return color1(d.data.age);
-        });
+        return color1(d.data.age);})
+        .transition()
+        .ease("spring")
+        .duration(1000)
+        .attrTween("d", tweenPie);
 
 
     g.append("text")
@@ -438,6 +462,6 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age + "   $" + numberWithCommas(d.data.total);
+            return d.data.age;
         });
 });
