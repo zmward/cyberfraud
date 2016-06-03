@@ -6,7 +6,15 @@ var h = 350;
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
-
+//Creating a function to dispay number like: 1.2 Million
+function niceNumber(x){
+    uglyNum = x;
+    niceNum = x/1000000;
+    twoPlacedFloat = parseFloat(niceNum).toFixed(1);
+    return twoPlacedFloat;
+    
+}
+//Taking M# or F# and giving correct age range
 function targetType(x) {
     target = x;
 
@@ -188,7 +196,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(0)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + targetType(d.properties.MainTarget) + "<br>" + "Main Target Loss: $" + numberWithCommas(d.properties.MainTargetLoss) + "<br>" + "Loss per capita: $" + (d.properties.value / d.properties.Population).toFixed(2) + "")
+                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million"+ "</center><br>" + "<span style='float:left;'>" + "Main Target: " + "</span>"+ "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>"+ "Loss per capita: "+ "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.Population).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -278,7 +286,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("" + d.properties.state + "<br>" + "Total Loss: $" + numberWithCommas(d.properties.value) + "<br>" + "Main Target: " + targetType(d.properties.MainTarget) + "<br>" + "Main Target Loss: $" + numberWithCommas(d.properties.MainTargetLoss) + "<br>" + "Loss per capita: $" + (d.properties.value / d.properties.Population).toFixed(2) + "")
+                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million"+ "</center><br>" + "<span style='float:left;'>" + "Main Target: " + "</span>"+ "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>"+ "Loss per capita: "+ "</span>" + "<span style='float:right;'>" + "$" +(d.properties.value / d.properties.Population).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -360,7 +368,7 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         .attr("dy", ".35em")
         .text(function (d) {
          //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-            return d.data.age;
+            return targetType(d.data.age);
         });
 });
 
@@ -394,7 +402,7 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age;
+            return targetType(d.data.age);
         });
 });
 
@@ -429,7 +437,7 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age;
+            return targetType(d.data.age);
         });
 });
 
@@ -462,6 +470,6 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         })
         .attr("dy", ".35em")
         .text(function (d) {
-            return d.data.age;
+            return targetType(d.data.age);
         });
 });
