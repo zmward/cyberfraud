@@ -7,12 +7,12 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 //Creating a function to dispay number like: 1.2 Million
-function niceNumber(x){
+function niceNumber(x) {
     uglyNum = x;
-    niceNum = x/1000000;
+    niceNum = x / 1000000;
     twoPlacedFloat = parseFloat(niceNum).toFixed(1);
     return twoPlacedFloat;
-    
+
 }
 //Taking M# or F# and giving correct age range
 function targetType(x) {
@@ -61,8 +61,8 @@ var path = d3.geo.path()
 
 //new function (from http://sureshlodha.github.io/SFvsLA/maps.js)
 var Popcolor = d3.scale.quantize()
-                 .range(["#fef0d9", "#fdbb84","#fc8d59", "#e34a33", "#b30000", "#7f0000"])
-                 .domain([0.14, 3.33]);
+    .range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"])
+    .domain([0.14, 3.33]);
 
 //Define quantize scale to sort data values into buckets of color
 var color = d3.scale.quantize()
@@ -142,6 +142,12 @@ d3.csv("datasetfor2012.csv", function (data) {
         })
 
 
+
+
+
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -165,6 +171,7 @@ d3.csv("datasetfor2012.csv", function (data) {
             var dataValue = parseFloat(data[i].value);
             var dataMainTargetLoss = parseFloat(data[i].MainTargetLoss);
             var dataPopulation = parseFloat(data[i].Population);
+            var dataTotalComplaints = parseFloat(data[i].total_complaints);
 
             //Find the corresponding state inside the GeoJSON
             for (var j = 0; j < json.features.length; j++) {
@@ -179,6 +186,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                     json.features[i].properties.MainTarget = dataMainTarget;
                     json.features[i].properties.MainTargetLoss = dataMainTargetLoss;
                     json.features[i].properties.Population = dataPopulation;
+                    json.features[i].properties.total_complaints = dataTotalComplaints;
 
                     //Stop looking through the JSON
                     break;
@@ -200,12 +208,13 @@ d3.csv("datasetfor2012.csv", function (data) {
                 var state = d.properties.state;
                 var MainTarget = d.properties.MainTarget;
                 var Population = d.properties.Population;
-            
+                var complaints = d.properties.total_complaints;
+
 
 
                 if (value) {
                     //If value exists…
-                    return Popcolor(value/Population);
+                    return Popcolor(value / complaints);
                 } else {
                     //If value is undefined…
                     return "#ccc";
@@ -217,7 +226,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(0)
                     .style("opacity", .9);
-                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million"+ "</center><br>" + "<span style='float:left;'>" + "Main Target: " + "</span>"+ "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>"+ "Loss per capita: "+ "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.Population).toFixed(2) + "</span>")
+                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center><br>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.Population).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -240,6 +249,12 @@ d3.csv("datasetfor2014.csv", function (data) {
         })
 
 
+
+
+
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -262,6 +277,7 @@ d3.csv("datasetfor2014.csv", function (data) {
             var dataValue = parseFloat(data[i].value);
             var dataMainTargetLoss = parseFloat(data[i].MainTargetLoss);
             var dataPopulation = parseFloat(data[i].Population);
+            var dataTotalComplaints = parseFloat(data[i].total_complaints);
 
             //Find the corresponding state inside the GeoJSON
             for (var j = 0; j < json.features.length; j++) {
@@ -276,6 +292,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                     json.features[i].properties.MainTarget = dataMainTarget;
                     json.features[i].properties.MainTargetLoss = dataMainTargetLoss;
                     json.features[i].properties.Population = dataPopulation;
+                    json.features[i].properties.total_complaints = dataTotalComplaints;
 
                     //Stop looking through the JSON
                     break;
@@ -297,11 +314,12 @@ d3.csv("datasetfor2014.csv", function (data) {
                 var state = d.properties.state;
                 var MainTarget = d.properties.MainTarget;
                 var Population = d.properties.Population;
+                var complaints = d.properties.total_complaints;
 
 
                 if (value) {
                     //If value exists…
-                    return Popcolor(value/Population);
+                    return Popcolor(value / complaints);
                 } else {
                     //If value is undefined…
                     return "#ccc";
@@ -311,7 +329,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million"+ "</center><br>" + "<span style='float:left;'>" + "Main Target: " + "</span>"+ "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>"+ "Loss per capita: "+ "</span>" + "<span style='float:right;'>" + "$" +(d.properties.value / d.properties.Population).toFixed(2) + "</span>")
+                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center><br>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.Population).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -329,7 +347,7 @@ d3.csv("datasetfor2014.csv", function (data) {
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
-    .range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000" ]);
+    .range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]);
 //["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", //"#b30000", "#7f0000"]
 var radius = 125;
 
@@ -355,15 +373,15 @@ function type(d) {
 
 
 function tweenPie(b) {
-            b.innerRadius = 0;
-            var i = d3.interpolate({
-                startAngle: 0,
-                endAngle: 0
-            }, b);
-            return function(t) {
-                return arc(i(t));
-            };
-        }
+    b.innerRadius = 0;
+    var i = d3.interpolate({
+        startAngle: 0
+        , endAngle: 0
+    }, b);
+    return function (t) {
+        return arc(i(t));
+    };
+}
 
 d3.csv("datasetfor2012female.csv", type, function (error, data) {
     if (error) throw error;
@@ -379,7 +397,8 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
     g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-        return color1(d.data.age);})
+            return color1(d.data.age);
+        })
         .transition()
         .ease("spring")
         .duration(1000)
@@ -400,10 +419,11 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
 
 
-      g.append("path")
+    g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-        return color1(d.data.age);})
+            return color1(d.data.age);
+        })
         .transition()
         .ease("spring")
         .duration(1000)
@@ -426,10 +446,11 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
 
 
-      g.append("path")
+    g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-        return color1(d.data.age);})
+            return color1(d.data.age);
+        })
         .transition()
         .ease("spring")
         .duration(1000)
@@ -450,10 +471,11 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
 
 
-      g.append("path")
+    g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
-        return color1(d.data.age);})
+            return color1(d.data.age);
+        })
         .transition()
         .ease("spring")
         .duration(1000)
@@ -462,65 +484,85 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
 
 
 //legend for maps
-var map_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000" ];
+var map_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"];
 var map_numb = ["$0.00 - $0.70", "$0.71 - $1.20", "$1.21 - $1.74", "$1.75 - $2.20", "$2.20 - $3.00", "> $3.00"];
 
 //legend creation attached to the svg
 var legend = svg7.selectAll(".legend")
-    .data(map_col, function(d) { return d; })
+    .data(map_col, function (d) {
+        return d;
+    })
     .enter()
     .append("g")
     .attr("class", "legend");
 
 legend.append("rect")
-        //sets the location and width of each colored rectangles and adds the iteratively
-        .attr("x", 0)
-        .attr("y", function(d,i){ return  (50 * i);})
-        .attr("width", 80)
-        .attr("height", 50)
-        .attr("fill", function(d, i){ return map_col[i];})
-        .style("stroke", "black")
-        .style("stroke-width", "1px");  
+    //sets the location and width of each colored rectangles and adds the iteratively
+    .attr("x", 0)
+    .attr("y", function (d, i) {
+        return (50 * i);
+    })
+    .attr("width", 80)
+    .attr("height", 50)
+    .attr("fill", function (d, i) {
+        return map_col[i];
+    })
+    .style("stroke", "black")
+    .style("stroke-width", "1px");
 
 //appends the text in the legend color boxes
- legend.append("text")
-        .attr("x", 5)
-        .attr("y", function(d,i){ return 45 + (50 * i);})
-        .attr("width", 80)
-        .attr("height", 30)
-        .style("fill", "black")
-        .style("font-weight", "bold")
-        .style("font-color", "color:#525252")
-        .text(function(d, i) { return map_numb[i];});
+legend.append("text")
+    .attr("x", 5)
+    .attr("y", function (d, i) {
+        return 45 + (50 * i);
+    })
+    .attr("width", 80)
+    .attr("height", 30)
+    .style("fill", "black")
+    .style("font-weight", "bold")
+    .style("font-color", "color:#525252")
+    .text(function (d, i) {
+        return map_numb[i];
+    });
 
 //legend for pies
-var pay_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000" ];
+var pay_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"];
 var pay_numb = ["under 20", "20 - 29", "30 - 39", "40 - 49", "50 - 59", "60 & over"];
 
 //legend creation attached to the svg
 var legend = svg8.selectAll(".legend")
-    .data(pay_col, function(d) { return d; })
+    .data(pay_col, function (d) {
+        return d;
+    })
     .enter()
     .append("g")
     .attr("class", "legend");
 
 legend.append("rect")
-        //sets the location and width of each colored rectangles and adds the iteratively
-        .attr("x", 0)
-        .attr("y", function(d,i){ return  (33 * i);})
-        .attr("width", 80)
-        .attr("height", 33)
-        .attr("fill", function(d, i){ return pay_col[i];})
-        .style("stroke", "black")
-        .style("stroke-width", "1px");  
+    //sets the location and width of each colored rectangles and adds the iteratively
+    .attr("x", 0)
+    .attr("y", function (d, i) {
+        return (33 * i);
+    })
+    .attr("width", 80)
+    .attr("height", 33)
+    .attr("fill", function (d, i) {
+        return pay_col[i];
+    })
+    .style("stroke", "black")
+    .style("stroke-width", "1px");
 
 //appends the text in the legend color boxes
- legend.append("text")
-        .attr("x", 5)
-        .attr("y", function(d,i){ return 30 + (33 * i);})
-        .attr("width", 80)
-        .attr("height", 30)
-        .style("fill", "black")
-        .style("font-weight", "bold")
-        .style("font-color", "color:#525252")
-        .text(function(d, i) { return pay_numb[i];});
+legend.append("text")
+    .attr("x", 5)
+    .attr("y", function (d, i) {
+        return 30 + (33 * i);
+    })
+    .attr("width", 80)
+    .attr("height", 30)
+    .style("fill", "black")
+    .style("font-weight", "bold")
+    .style("font-color", "color:#525252")
+    .text(function (d, i) {
+        return pay_numb[i];
+    });
