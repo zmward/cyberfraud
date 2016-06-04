@@ -150,6 +150,7 @@ d3.csv("datasetfor2012.csv", function (data) {
 
 
 
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -249,6 +250,7 @@ d3.csv("datasetfor2014.csv", function (data) {
     color.domain([d3.min(data, function (d) {
             return d.value;
         })
+
 
 
 
@@ -489,7 +491,7 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
 
 //legend for maps
 var map_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"];
-var map_numb = ["$0.00 - $0.70", "$0.71 - $1.20", "$1.21 - $1.74", "$1.75 - $2.20", "$2.20 - $3.00", "> $3.00"];
+var map_numb = ["$500 - $1125", "$1126 - $1751", "$1752 - $2377", "$2378 - $3003", "$3004 - $3629", "> $3630"];
 
 //legend creation attached to the svg
 var legend = svg7.selectAll(".legend")
