@@ -304,7 +304,7 @@ d3.csv("datasetfor2014.csv", function (data) {
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+    .range(["#fef0d9", "#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000"]);
 
 var radius = 125;
 
