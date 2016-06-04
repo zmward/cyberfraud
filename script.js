@@ -74,7 +74,7 @@ var color = d3.scale.quantize()
 var svg1 = d3.select("#section31")
     .append("svg")
     .style("height", 350)
-    .style("width", 600)
+    .style("width", 570)
     .style("background", "white")
     .style("float", "left");
 
@@ -82,7 +82,7 @@ var svg1 = d3.select("#section31")
 var svg2 = d3.select("#section32")
     .append("svg")
     .style("height", 350)
-    .style("width", 600)
+    .style("width", 530)
     .style("float", "right")
     .style("background", "white");
 
@@ -90,43 +90,44 @@ var svg2 = d3.select("#section32")
 var svg3 = d3.select("#section311")
     .append("svg")
     .style("height", 200)
-    .style("width", 300)
+    .style("width", 275)
     .style("background", "white");
 
 //Create second pie chart SVG element
 var svg4 = d3.select("#section312")
     .append("svg")
     .style("height", 200)
-    .style("width", 300)
+    .style("width", 275)
     .style("background", "white");
 
 //Create second pie chart SVG element
 var svg5 = d3.select("#section321")
     .append("svg")
     .style("height", 200)
-    .style("width", 300)
+    .style("width", 275)
     .style("background", "white");
 
 //Create second pie chart SVG element
 var svg6 = d3.select("#section322")
     .append("svg")
     .style("height", 200)
-    .style("width", 300)
+    .style("width", 275)
     .style("background", "white");
 
 //Create legend1
 var svg7 = d3.select("#section33")
     .append("svg")
     .style("height", 350)
-    .style("width", 80)
+    .style("width", 60)
     .style("background", "white");
 
 //Create legend2
 var svg8 = d3.select("#section313")
     .append("svg")
     .style("height", 200)
-    .style("width", 80)
+    .style("width", 60)
     .style("background", "white");
+
 
 //Define Tooltip
 var tooltip = d3.select("body").append("div")
@@ -490,85 +491,70 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
 
 
 //legend for maps
+<<<<<<< HEAD
 var map_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"];
 var map_numb = ["$500 - $1125", "$1126 - $1751", "$1752 - $2377", "$2378 - $3003", "$3004 - $3629", "> $3630"];
+=======
+var map_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000" ];
+var map_numb = ["$0.00-$0.70", "$0.71-$1.20", "$1.21-$1.74", "$1.75-$2.20", "$2.20-$3.00", "> $3.00"];
+>>>>>>> 8cbb547bcba4fc3b7ef8c90122c177500f6e597f
 
 //legend creation attached to the svg
 var legend = svg7.selectAll(".legend")
-    .data(map_col, function (d) {
-        return d;
-    })
+    .data(map_col, function(d) { return d; })
     .enter()
     .append("g")
     .attr("class", "legend");
 
 legend.append("rect")
-    //sets the location and width of each colored rectangles and adds the iteratively
-    .attr("x", 0)
-    .attr("y", function (d, i) {
-        return (50 * i);
-    })
-    .attr("width", 80)
-    .attr("height", 50)
-    .attr("fill", function (d, i) {
-        return map_col[i];
-    })
-    .style("stroke", "black")
-    .style("stroke-width", "1px");
+        //sets the location and width of each colored rectangles and adds the iteratively
+        .attr("x", 0)
+        .attr("y", function(d,i){ return  (50 * i);})
+        .attr("width", 60)
+        .attr("height", 50)
+        .attr("fill", function(d, i){ return map_col[i];})
+        .style("stroke", "black")
+        .style("stroke-width", "1px");  
 
 //appends the text in the legend color boxes
-legend.append("text")
-    .attr("x", 5)
-    .attr("y", function (d, i) {
-        return 45 + (50 * i);
-    })
-    .attr("width", 80)
-    .attr("height", 30)
-    .style("fill", "black")
-    .style("font-weight", "bold")
-    .style("font-color", "color:#525252")
-    .text(function (d, i) {
-        return map_numb[i];
-    });
+ legend.append("text")
+        .attr("x", 5)
+        .attr("y", function(d,i){ return 45 + (50 * i);})
+        .attr("width", 60)
+        .attr("height", 30)
+        .style("fill", "black")
+        .style("font-weight", "bold")
+        .style("font-color", "color:#525252")
+        .text(function(d, i) { return map_numb[i];});
 
 //legend for pies
-var pay_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"];
+var pay_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000" ];
 var pay_numb = ["under 20", "20 - 29", "30 - 39", "40 - 49", "50 - 59", "60 & over"];
 
 //legend creation attached to the svg
 var legend = svg8.selectAll(".legend")
-    .data(pay_col, function (d) {
-        return d;
-    })
+    .data(pay_col, function(d) { return d; })
     .enter()
     .append("g")
     .attr("class", "legend");
 
 legend.append("rect")
-    //sets the location and width of each colored rectangles and adds the iteratively
-    .attr("x", 0)
-    .attr("y", function (d, i) {
-        return (33 * i);
-    })
-    .attr("width", 80)
-    .attr("height", 33)
-    .attr("fill", function (d, i) {
-        return pay_col[i];
-    })
-    .style("stroke", "black")
-    .style("stroke-width", "1px");
+        //sets the location and width of each colored rectangles and adds the iteratively
+        .attr("x", 0)
+        .attr("y", function(d,i){ return  (33 * i);})
+        .attr("width", 60)
+        .attr("height", 33)
+        .attr("fill", function(d, i){ return pay_col[i];})
+        .style("stroke", "black")
+        .style("stroke-width", "1px");  
 
 //appends the text in the legend color boxes
-legend.append("text")
-    .attr("x", 5)
-    .attr("y", function (d, i) {
-        return 30 + (33 * i);
-    })
-    .attr("width", 80)
-    .attr("height", 30)
-    .style("fill", "black")
-    .style("font-weight", "bold")
-    .style("font-color", "color:#525252")
-    .text(function (d, i) {
-        return pay_numb[i];
-    });
+ legend.append("text")
+        .attr("x", 5)
+        .attr("y", function(d,i){ return 30 + (33 * i);})
+        .attr("width", 60)
+        .attr("height", 30)
+        .style("fill", "black")
+        .style("font-weight", "bold")
+        .style("font-color", "color:#525252")
+        .text(function(d, i) { return pay_numb[i];});

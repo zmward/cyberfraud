@@ -7,27 +7,27 @@
     background-color:white;
     color:white;
     text-align:center;
-    width:600px;
+    width:550px;
     float:left;
 }
 #header3 {
     background-color:white;
     color:white;
     text-align:center;
-    width:600px;
+    width:550px;
     float:left;
 }
 #section1 {
     
     height:600px;
-    width:680px;
+    width:630px;
     float:left;
     background-color:white;
 }
 
 #section2 {
     height:600px;
-    width:600px;
+    width:530px;
     float:left; 
     background-color:white;
     text-align:center;
@@ -36,55 +36,55 @@
 
 #section31 {
     height:350px;
-    width:600px;
+    width:570px;
     background-color:white;
     float: left
 }
 
 #section32 {
     height:350px;
-    width:600px;
+    width:530px;
     background-color:white;
     float: left
 }
 
 #section33 {
     height:350px;
-    width:80px;
+    width:60px;
     background-color:gainsboro;
     float: left
 }
 
 #section311 {
     height:200px;
-    width:300px;
+    width:275px;
     background-color:white;
     float: left
 }
 
 #section312 {
     height:200px;
-    width:300px;
+    width:275px;
     background-color:white;
     float:left
 }
 
 #section313 {
     height:200px;
-    width:80px;
-    background-color:greenyellow;
-    float:left
+    width:60px;
+    background-color:white;
+    float:right
 }
 #section321 {
     height:200px;
-    width:300px;
+    width:265px;
     background-color:white;
     float: left
 }
 
 #section322 {
     height:200px;
-    width:300px;
+    width:265px;
     background-color:white;
     float:right
 }
@@ -93,7 +93,7 @@
     padding:10px;
     background-color:white;
     text-align:center;
-    width:1300px;
+    width:1200px;
     float: left
 }
 
