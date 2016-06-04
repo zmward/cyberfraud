@@ -59,9 +59,15 @@ var projection = d3.geo.albersUsa()
 var path = d3.geo.path()
     .projection(projection);
 
+//new function (from http://sureshlodha.github.io/SFvsLA/maps.js)
+var Popcolor = d3.scale.quantize()
+                 .range(["#fef0d9", "#fdbb84","#fc8d59", "#e34a33", "#b30000", "#7f0000"])
+                 .domain([0.14, 3.33]);
+
 //Define quantize scale to sort data values into buckets of color
 var color = d3.scale.quantize()
-    .range(["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", "#b30000", "#7f0000"]);
+    .range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]).domain([0, 6]);
+
 //Colors taken from colorbrewer.js, included in the D3 download
 
 //Create first map SVG element
@@ -106,6 +112,20 @@ var svg6 = d3.select("#section322")
     .append("svg")
     .style("height", 200)
     .style("width", 300)
+    .style("background", "white");
+
+//Create legend1
+var svg7 = d3.select("#section33")
+    .append("svg")
+    .style("height", 350)
+    .style("width", 80)
+    .style("background", "white");
+
+//Create legend2
+var svg8 = d3.select("#section313")
+    .append("svg")
+    .style("height", 200)
+    .style("width", 80)
     .style("background", "white");
 
 //Define Tooltip
@@ -180,11 +200,12 @@ d3.csv("datasetfor2012.csv", function (data) {
                 var state = d.properties.state;
                 var MainTarget = d.properties.MainTarget;
                 var Population = d.properties.Population;
+            
 
 
                 if (value) {
                     //If value exists…
-                    return color(value);
+                    return Popcolor(value/Population);
                 } else {
                     //If value is undefined…
                     return "#ccc";
@@ -273,10 +294,14 @@ d3.csv("datasetfor2014.csv", function (data) {
             .style("fill", function (d) {
                 //Get data value
                 var value = d.properties.value;
+                var state = d.properties.state;
+                var MainTarget = d.properties.MainTarget;
+                var Population = d.properties.Population;
+
 
                 if (value) {
                     //If value exists…
-                    return color(value);
+                    return Popcolor(value/Population);
                 } else {
                     //If value is undefined…
                     return "#ccc";
@@ -304,8 +329,8 @@ d3.csv("datasetfor2014.csv", function (data) {
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
-    .range(["#fef0d9", "#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000"]);
-
+    .range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000" ]);
+//["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", //"#b30000", "#7f0000"]
 var radius = 125;
 
 var arc = d3.svg.arc()
@@ -359,17 +384,6 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         .ease("spring")
         .duration(1000)
         .attrTween("d", tweenPie);
-
-
-    g.append("text")
-        .attr("transform", function (d) {
-            return "translate(" + labelArc.centroid(d) + ")";
-        })
-        .attr("dy", ".35em")
-        .text(function (d) {
-         //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-            return targetType(d.data.age);
-        });
 });
 
 ///////////////////////////////// 2012 MALE PIE CHART ///////////////////////////////////////
@@ -395,15 +409,6 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         .duration(1000)
         .attrTween("d", tweenPie);
 
-
-    g.append("text")
-        .attr("transform", function (d) {
-            return "translate(" + labelArc.centroid(d) + ")";
-        })
-        .attr("dy", ".35em")
-        .text(function (d) {
-            return targetType(d.data.age);
-        });
 });
 
 
@@ -430,15 +435,6 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         .duration(1000)
         .attrTween("d", tweenPie);
 
-
-    g.append("text")
-        .attr("transform", function (d) {
-            return "translate(" + labelArc.centroid(d) + ")";
-        })
-        .attr("dy", ".35em")
-        .text(function (d) {
-            return targetType(d.data.age);
-        });
 });
 
 ///////////////////////////////// 2014 MALE PIE CHART ///////////////////////////////////////
@@ -462,14 +458,69 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         .ease("spring")
         .duration(1000)
         .attrTween("d", tweenPie);
-
-
-    g.append("text")
-        .attr("transform", function (d) {
-            return "translate(" + labelArc.centroid(d) + ")";
-        })
-        .attr("dy", ".35em")
-        .text(function (d) {
-            return targetType(d.data.age);
-        });
 });
+
+
+//legend for maps
+var map_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000" ];
+var map_numb = ["$0.00 - $0.70", "$0.71 - $1.20", "$1.21 - $1.74", "$1.75 - $2.20", "$2.20 - $3.00", "> $3.00"];
+
+//legend creation attached to the svg
+var legend = svg7.selectAll(".legend")
+    .data(map_col, function(d) { return d; })
+    .enter()
+    .append("g")
+    .attr("class", "legend");
+
+legend.append("rect")
+        //sets the location and width of each colored rectangles and adds the iteratively
+        .attr("x", 0)
+        .attr("y", function(d,i){ return  (50 * i);})
+        .attr("width", 80)
+        .attr("height", 50)
+        .attr("fill", function(d, i){ return map_col[i];})
+        .style("stroke", "black")
+        .style("stroke-width", "1px");  
+
+//appends the text in the legend color boxes
+ legend.append("text")
+        .attr("x", 5)
+        .attr("y", function(d,i){ return 45 + (50 * i);})
+        .attr("width", 80)
+        .attr("height", 30)
+        .style("fill", "black")
+        .style("font-weight", "bold")
+        .style("font-color", "color:#525252")
+        .text(function(d, i) { return map_numb[i];});
+
+//legend for pies
+var pay_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000" ];
+var pay_numb = ["under 20", "20 - 29", "30 - 39", "40 - 49", "50 - 59", "60 & over"];
+
+//legend creation attached to the svg
+var legend = svg8.selectAll(".legend")
+    .data(pay_col, function(d) { return d; })
+    .enter()
+    .append("g")
+    .attr("class", "legend");
+
+legend.append("rect")
+        //sets the location and width of each colored rectangles and adds the iteratively
+        .attr("x", 0)
+        .attr("y", function(d,i){ return  (33 * i);})
+        .attr("width", 80)
+        .attr("height", 33)
+        .attr("fill", function(d, i){ return pay_col[i];})
+        .style("stroke", "black")
+        .style("stroke-width", "1px");  
+
+//appends the text in the legend color boxes
+ legend.append("text")
+        .attr("x", 5)
+        .attr("y", function(d,i){ return 30 + (33 * i);})
+        .attr("width", 80)
+        .attr("height", 30)
+        .style("fill", "black")
+        .style("font-weight", "bold")
+        .style("font-color", "color:#525252")
+        .text(function(d, i) { return pay_numb[i];});
