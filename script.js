@@ -48,7 +48,7 @@ function targetType(x) {
 
 }
 // Created State select fucntion for pie charts
-function type(d) {
+function state(d) {
     d.Alabama = +d.Alabama;	
     d.Alaska = +d.Alaska;	
     d.Arizona = +d.Arizona;	
@@ -307,7 +307,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                     .style("opacity", 0);
             })
             .on("click", function (d) {
-                alert("clicked " + d.properties.state + " 2012");
+                alert("clicked " + state(d.properties.state) + " 2012");
             });
 
 
@@ -484,7 +484,20 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+        .on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                    .style("left", (d3.event.pageX + 5) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
 
 
     g.append("path")
@@ -496,6 +509,10 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         .ease("spring")
         .duration(1000)
         .attrTween("d", tweenPie);
+    
+    
+    
+    
 });
 
 ///////////////////////////////// 2012 MALE PIE CHART ///////////////////////////////////////
@@ -509,7 +526,20 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    .on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                    .style("left", (d3.event.pageX + 5) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
 
 
     g.append("path")
@@ -536,7 +566,20 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    .on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                    .style("left", (d3.event.pageX + 5) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
 
 
     g.append("path")
@@ -561,7 +604,20 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");;
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    .on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                    .style("left", (d3.event.pageX + 5) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
 
 
     g.append("path")
