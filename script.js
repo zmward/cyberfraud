@@ -531,7 +531,7 @@ legend.append("rect")
 
 //appends the text in the legend color boxes
 legend.append("text")
-    .attr("x", 5)
+    .attr("x", 2)
     .attr("y", function (d, i) {
         return 45 + (50 * i);
     })
