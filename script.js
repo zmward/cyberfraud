@@ -504,7 +504,7 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
 
 //legend for maps
 var map_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"];
-var map_numb = ["$500 - $1125", "$1126 - $1751", "$1752 - $2377", "$2378 - $3003", "$3004 - $3629", "> $3630"];
+var map_numb = ["$500-$1125", "$1126-$1751", "$1752-$2377", "$2378-$3003", "$3004-$3629", "  > $3630"];
 
 //legend creation attached to the svg
 var legend = svg7.selectAll(".legend")
