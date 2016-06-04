@@ -53,7 +53,7 @@ function targetType(x) {
 //Define map projection
 var projection = d3.geo.albersUsa()
     .translate([w / 2, h / 2])
-    .scale([700]);
+    .scale([600]);
 
 //Define path generator
 var path = d3.geo.path()
