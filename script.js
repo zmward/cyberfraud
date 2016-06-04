@@ -74,7 +74,7 @@ var color = d3.scale.quantize()
 var svg1 = d3.select("#section31")
     .append("svg")
     .style("height", 350)
-    .style("width", 600)
+    .style("width", 570)
     .style("background", "white")
     .style("float", "left");
 
@@ -82,7 +82,7 @@ var svg1 = d3.select("#section31")
 var svg2 = d3.select("#section32")
     .append("svg")
     .style("height", 350)
-    .style("width", 600)
+    .style("width", 530)
     .style("float", "right")
     .style("background", "white");
 
@@ -90,43 +90,44 @@ var svg2 = d3.select("#section32")
 var svg3 = d3.select("#section311")
     .append("svg")
     .style("height", 200)
-    .style("width", 300)
+    .style("width", 275)
     .style("background", "white");
 
 //Create second pie chart SVG element
 var svg4 = d3.select("#section312")
     .append("svg")
     .style("height", 200)
-    .style("width", 300)
+    .style("width", 275)
     .style("background", "white");
 
 //Create second pie chart SVG element
 var svg5 = d3.select("#section321")
     .append("svg")
     .style("height", 200)
-    .style("width", 300)
+    .style("width", 275)
     .style("background", "white");
 
 //Create second pie chart SVG element
 var svg6 = d3.select("#section322")
     .append("svg")
     .style("height", 200)
-    .style("width", 300)
+    .style("width", 275)
     .style("background", "white");
 
 //Create legend1
 var svg7 = d3.select("#section33")
     .append("svg")
     .style("height", 350)
-    .style("width", 80)
+    .style("width", 60)
     .style("background", "white");
 
 //Create legend2
 var svg8 = d3.select("#section313")
     .append("svg")
     .style("height", 200)
-    .style("width", 80)
+    .style("width", 60)
     .style("background", "white");
+
 
 //Define Tooltip
 var tooltip = d3.select("body").append("div")
