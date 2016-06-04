@@ -156,3 +156,8 @@ text {
     stroke: black;
     stroke-width: 0.5px;
 }
+
+.arc path {
+  stroke: #000;
+      
+}
