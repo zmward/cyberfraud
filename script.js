@@ -158,6 +158,13 @@ d3.csv("datasetfor2012.csv", function (data) {
 
 
 
+
+
+
+
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -244,6 +251,9 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
+            })
+            .on("click", function (d) {
+                alert("clicked " + d.properties.state + " 2012");
             });
 
 
@@ -257,6 +267,13 @@ d3.csv("datasetfor2014.csv", function (data) {
     color.domain([d3.min(data, function (d) {
             return d.value;
         })
+
+
+
+
+
+
+
 
 
 
@@ -356,6 +373,9 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
+            })
+            .on("click", function (d) {
+                alert("clicked " + d.properties.state + " 2014");
             });
 
 
