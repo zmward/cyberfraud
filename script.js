@@ -61,8 +61,8 @@ var path = d3.geo.path()
 
 //new function (from http://sureshlodha.github.io/SFvsLA/maps.js)
 var Popcolor = d3.scale.quantize()
-    .range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]);
-//.domain([0.14, 3.33]);
+    .range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"])
+    .domain([500, 4249]);
 
 //Define quantize scale to sort data values into buckets of color
 var color = d3.scale.quantize()
@@ -140,6 +140,7 @@ d3.csv("datasetfor2012.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
 
 
 
@@ -248,6 +249,7 @@ d3.csv("datasetfor2014.csv", function (data) {
     color.domain([d3.min(data, function (d) {
             return d.value;
         })
+
 
 
 
