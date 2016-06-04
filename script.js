@@ -47,7 +47,61 @@ function targetType(x) {
     }
 
 }
-
+// Created State select fucntion for pie charts
+function type(d) {
+    d.Alabama = +d.Alabama;	
+    d.Alaska = +d.Alaska;	
+    d.Arizona = +d.Arizona;	
+    d.Arkansas = +d.Arkansas;	
+    d.California = +d.California;	
+    d.Colorado = +d.Colorado;	
+    d.Connecticut = +d.Connecticut;	
+    d.Delaware = +d.Delaware;	
+    d.District_of_Columbia = +d.District_of_Columbia;	
+    d.Florida = +d.Florida;	
+    d.Georgia = +d.Georgia;	
+    d.Hawaii = +d.Hawaii;	
+    d.Idaho = +d.Idaho;	
+    d.Illinois = +d.Illinois;	
+    d.Indiana = +d.Indiana;	
+    d.Iowa = +d.Iowa;	
+    d.Kansas = +d.Kansas;	
+    d.Kentucky = +d.Kentucky;	
+    d.Louisiana = +d.Louisiana;	
+    d.Maine = +d.Maine;	
+    d.Maryland = +d.Maryland;	
+    d.Massachusetts	= +d.Massachusetts;
+    d.Michigan = +d.Michigan;	
+    d.Minnesota = +d.Minnesota;	
+    d.Mississippi = +d.Mississippi;	
+    d.Missouri = +d.Missouri;	
+    d.Montana = +d.Montana;	
+    d.Nebraska = +d.Nebraska;	
+    d.Nevada = +d.Nevada;	
+    d.New_Hampshire = +d.New_Hampshire;	
+    d.New_Jersey = +d.New_Jersey;	
+    d.New_Mexico = +d.New_Mexico;	
+    d.New_York = +d.New_York;	
+    d.North_Carolina = +d.North_Carolina;	
+    d.North_Dakota = +d.North_Dakota;	
+    d.Ohio = +d.Ohio;	
+    d.Oklahoma = +d.Oklahoma;	
+    d.Oregon = +d.Oregon;	
+    d.Pennsylvania = +d.Pennsylvania;	
+    d.Rhode_Island = +d.Rhode_Island;	
+    d.South_Carolina = +d.South_Carolina;	
+    d.South_Dakota = +d.South_Dakota;	
+    d.Tennessee	= +d.Tennessee;
+    d.Texas	= +d.Texas;
+    d.Utah = +d.Utah;	
+    d.Vermont = +d.Vermont;	
+    d.Virginia = +d.Virginia;	
+    d.Washington = +d.Washington;	
+    d.West_Virginia = +d.West_Virginia;	
+    d.Wisconsin = +d.Wisconsin;
+    d.Wyoming = +d.Wyoming;	
+  return d;
+}
 
 
 //Define map projection
