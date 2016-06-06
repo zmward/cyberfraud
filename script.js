@@ -282,9 +282,51 @@ d3.csv("datasetfor2012.csv", function (data) {
                     .duration(500)
                     .style("opacity", 0);
             })
+        
             .on("click", function (d) {
-           svg3.selectAll("*")
-          .remove();
+                //alert("clicked " + state(d.properties.state) + " 2012");
+                svg3.selectAll("*")
+                .remove();
+                svg4.selectAll("*")
+                .remove();
+            
+                nameS = state(d.properties.state);
+            
+                d3.csv("datasetfor2012male.csv", type, function (error, data) {
+    if (error) throw error;
+
+
+    var g = svg4.selectAll(".arc")
+        .data(pie(data))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    .on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                    .style("left", (d3.event.pageX + 5) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+
+
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("spring")
+        .duration(1000)
+        .attrTween("d", tweenPie);
+
+});
             
             d3.csv("datasetfor2012female.csv", type, function (error, data) {
     if (error) throw error;
@@ -308,8 +350,8 @@ d3.csv("datasetfor2012.csv", function (data) {
                     .duration(500)
                     .style("opacity", 0);
             })
-    
-     
+
+
     g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
@@ -318,17 +360,9 @@ d3.csv("datasetfor2012.csv", function (data) {
         .transition()
         .ease("spring")
         .duration(1000)
-        .attrTween("d", tweenPie);
-    
-
-}); 
- 
-            
-            
-           //     alert("clicked " + state(d.properties.state) + " 2012");
+        .attrTween("d", tweenPie);   
+});            
             });
-
-
     });
 
 });
@@ -338,7 +372,8 @@ d3.csv("datasetfor2014.csv", function (data) {
     //Set input domain for color scale
     color.domain([d3.min(data, function (d) {
             return d.value;
-        })   
+        })
+        
         , d3.max(data, function (d) {
             return d.value;
         })
@@ -422,27 +457,100 @@ d3.csv("datasetfor2014.csv", function (data) {
                     .style("opacity", 0);
             })
             .on("click", function (d) {
-            //    alert("clicked " + d.properties.state + " 2014");
-         
-               
+            
+                svg5.selectAll("*")
+                .remove();
+                svg6.selectAll("*")
+                .remove();
+            
+                d3.csv("datasetfor2014female.csv", type, function (error, data) {
+    if (error) throw error;
+
+
+    var g = svg5.selectAll(".arc")
+        .data(pie(data))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    .on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                    .style("left", (d3.event.pageX + 5) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+
+
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("spring")
+        .duration(1000)
+        .attrTween("d", tweenPie);
+
+});
+            
+          d3.csv("datasetfor2014male.csv", type, function (error, data) {
+    if (error) throw error;
+
+
+    var g = svg6.selectAll(".arc")
+        .data(pie(data))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    .on("mouseover", function (d) {
+                tooltip.transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                    .style("left", (d3.event.pageX + 5) + "px")
+                    .style("top", (d3.event.pageY - 28) + "px");
+            })
+            .on("mouseout", function (d) {
+                tooltip.transition()
+                    .duration(500)
+                    .style("opacity", 0);
+            })
+
+
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("spring")
+        .duration(1000)
+        .attrTween("d", tweenPie);
+});  
+            
+            
+            
+   
             
             
             });
-        
-        
-        
 
 
     });
-    
-});
 
+});
 
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
     .range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]);
-
+//["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", //"#b30000", "#7f0000"]
 var radius = 125;
 
 var arc = d3.svg.arc()
@@ -499,8 +607,8 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
                     .duration(500)
                     .style("opacity", 0);
             })
-    
-     
+
+
     g.append("path")
         .attr("d", arc)
         .style("fill", function (d) {
@@ -509,11 +617,8 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         .transition()
         .ease("spring")
         .duration(1000)
-        .attrTween("d", tweenPie);
-    
-
+        .attrTween("d", tweenPie);   
 });
-
 
 ///////////////////////////////// 2012 MALE PIE CHART ///////////////////////////////////////
 
