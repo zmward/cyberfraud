@@ -291,13 +291,21 @@ d3.csv("datasetfor2012.csv", function (data) {
                 .remove();
             
                 nameS = state(d.properties.state);
-            
+                console.log(nameS);
                 d3.csv("datasetfor2012male.csv", type, function (error, data) {
     if (error) throw error;
-
-
+                     var filteredData = data.filter(function(d) {
+                         return data.map(x=> x[nameS]);
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
+                      
+                    
     var g = svg4.selectAll(".arc")
-        .data(pie(data))
+        .data(pie(filteredData))//why is use old Data??????
         .enter().append("g")
         .attr("class", "arc")
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
@@ -330,10 +338,18 @@ d3.csv("datasetfor2012.csv", function (data) {
             
             d3.csv("datasetfor2012female.csv", type, function (error, data) {
     if (error) throw error;
+            var filteredData = data.filter(function(d) {
+                         return data.map(x=> x[nameS]);
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
 
 
     var g = svg3.selectAll(".arc")
-        .data(pie(data))
+        .data(pie(filteredData))
         .enter().append("g")
         .attr("class", "arc")
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
@@ -465,10 +481,17 @@ d3.csv("datasetfor2014.csv", function (data) {
             
                 d3.csv("datasetfor2014female.csv", type, function (error, data) {
     if (error) throw error;
-
+                    var filteredData = data.filter(function(d) {
+                         return data.map(x=> x[nameS]);
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
 
     var g = svg5.selectAll(".arc")
-        .data(pie(data))
+        .data(pie(filteredData))
         .enter().append("g")
         .attr("class", "arc")
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
@@ -501,7 +524,14 @@ d3.csv("datasetfor2014.csv", function (data) {
             
           d3.csv("datasetfor2014male.csv", type, function (error, data) {
     if (error) throw error;
-
+              var filteredData = data.filter(function(d) {
+                         return data.map(x=> x[nameS]);
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
 
     var g = svg6.selectAll(".arc")
         .data(pie(data))
@@ -532,12 +562,7 @@ d3.csv("datasetfor2014.csv", function (data) {
         .ease("spring")
         .duration(1000)
         .attrTween("d", tweenPie);
-});  
-            
-            
-            
-   
-            
+});           
             
             });
 
