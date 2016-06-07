@@ -28,7 +28,7 @@
 #section2 {
     height:600px;
     width:530px;
-    float:left; 
+    float:right; 
     background-color:white;
     text-align:center;
 }
@@ -141,8 +141,8 @@ text {
 .tooltip {
     position: auto;
     width: 200px;
-    height: 100px;
-    padding: 10px;
+    height: 60px;
+    padding: 5px;
     background-color: white;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
