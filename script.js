@@ -292,103 +292,6 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
-        
-            .on("click", function (d) {
-                //alert("clicked " + state(d.properties.state) + " 2012");
-                svg3.selectAll("*")
-                .remove();
-                svg4.selectAll("*")
-                .remove();
-            
-                nameS = state(d.properties.state);
-                console.log(nameS);
-                d3.csv("datasetfor2012male.csv", type, function (error, data) {
-    if (error) throw error;
-                     var filteredData = data.filter(function(d) {
-                         return data.map(x=> x[nameS]);
-  });
-    var pie = d3.layout.pie()
-    .sort(null)
-    .value(function (d) {
-        return d[nameS];
-    });
-     
-                    
-    var g = svg4.selectAll(".arc")
-        .data(pie(filteredData))//why is use old Data??????
-        .enter().append("g")
-        .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-/*    .on("mouseover", function (d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + data.map(x=> x[nameS]) + "% " )
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function (d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            }) */
-
-
-    g.append("path")
-        .attr("d", arc)
-        .style("fill", function (d) {
-            return color1(d.data.age);
-        })
-        .transition()
-        .ease("spring")
-        .duration(1000)
-        .attrTween("d", tweenPie);
-
-});
-            
-            d3.csv("datasetfor2012female.csv", type, function (error, data) {
-    if (error) throw error;
-            var filteredData = data.filter(function(d) {
-                         return data.map(x=> x[nameS]);
-  });
-    var pie = d3.layout.pie()
-    .sort(null)
-    .value(function (d) {
-        return d[nameS];
-    });
-
-
-    var g = svg3.selectAll(".arc")
-        .data(pie(filteredData))
-        .enter().append("g")
-        .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-/*        .on("mouseover", function (d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function (d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            }) */
-
-
-    g.append("path")
-        .attr("d", arc)
-        .style("fill", function (d) {
-            return color1(d.data.age);
-        })
-        .transition()
-        .ease("spring")
-        .duration(1000)
-        .attrTween("d", tweenPie);   
-});            
             });
     });
 
@@ -482,101 +385,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
-            .on("click", function (d) {
-            
-                svg5.selectAll("*")
-                .remove();
-                svg6.selectAll("*")
-                .remove();
-            
-                d3.csv("datasetfor2014female.csv", type, function (error, data) {
-    if (error) throw error;
-                    var filteredData = data.filter(function(d) {
-                         return data.map(x=> x[nameS]);
-  });
-    var pie = d3.layout.pie()
-    .sort(null)
-    .value(function (d) {
-        return d[nameS];
-    });
-
-    var g = svg5.selectAll(".arc")
-        .data(pie(filteredData))
-        .enter().append("g")
-        .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-/*    .on("mouseover", function (d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function (d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            }) */
-
-
-    g.append("path")
-        .attr("d", arc)
-        .style("fill", function (d) {
-            return color1(d.data.age);
-        })
-        .transition()
-        .ease("spring")
-        .duration(1000)
-        .attrTween("d", tweenPie);
-
-});
-            
-          d3.csv("datasetfor2014male.csv", type, function (error, data) {
-    if (error) throw error;
-              var filteredData = data.filter(function(d) {
-                         return data.map(x=> x[nameS]);
-  });
-    var pie = d3.layout.pie()
-    .sort(null)
-    .value(function (d) {
-        return d[nameS];
-    });
-
-    var g = svg6.selectAll(".arc")
-        .data(pie(data))
-        .enter().append("g")
-        .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
- /*   .on("mouseover", function (d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function (d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            }) */
-
-
-    g.append("path")
-        .attr("d", arc)
-        .style("fill", function (d) {
-            return color1(d.data.age);
-        })
-        .transition()
-        .ease("spring")
-        .duration(1000)
-        .attrTween("d", tweenPie);
-});           
-            
             });
-
 
     });
 
@@ -585,7 +394,8 @@ d3.csv("datasetfor2014.csv", function (data) {
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
-    .range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]);
+    .range(["#f0f0f0", "#d9d9d9", "#bdbdbd", "#969696", "#737373", "#525252"]);
+    //.range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]);
 //["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", //"#b30000", "#7f0000"]
 var radius = 125;
 
@@ -815,44 +625,3 @@ legend.append("text")
         return map_numb[i];
     });
 
-//legend for pies
-var pay_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"];
-var pay_numb = ["under 20", "20 - 29", "30 - 39", "40 - 49", "50 - 59", "60 & over"];
-
-//legend creation attached to the svg
-var legend = svg8.selectAll(".legend")
-    .data(pay_col, function (d) {
-        return d;
-    })
-    .enter()
-    .append("g")
-    .attr("class", "legend");
-
-legend.append("rect")
-    //sets the location and width of each colored rectangles and adds the iteratively
-    .attr("x", 0)
-    .attr("y", function (d, i) {
-        return (33 * i);
-    })
-    .attr("width", 60)
-    .attr("height", 33)
-    .attr("fill", function (d, i) {
-        return pay_col[i];
-    })
-    .style("stroke", "black")
-    .style("stroke-width", "1px");
-
-//appends the text in the legend color boxes
-legend.append("text")
-    .attr("x", 5)
-    .attr("y", function (d, i) {
-        return 30 + (33 * i);
-    })
-    .attr("width", 60)
-    .attr("height", 30)
-    .style("fill", "black")
-    .style("font-weight", "bold")
-    .style("font-color", "color:#525252")
-    .text(function (d, i) {
-        return pay_numb[i];
-    });
