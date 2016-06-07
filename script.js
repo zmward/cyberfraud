@@ -49,68 +49,68 @@ function targetType(x) {
 }
 // Created State select fucntion for pie charts
 function state(d) {
-    d.Alabama = +d.Alabama;	
-    d.Alaska = +d.Alaska;	
-    d.Arizona = +d.Arizona;	
-    d.Arkansas = +d.Arkansas;	
-    d.California = +d.California;	
-    d.Colorado = +d.Colorado;	
-    d.Connecticut = +d.Connecticut;	
-    d.Delaware = +d.Delaware;	
-    d.District_of_Columbia = +d.District_of_Columbia;	
-    d.Florida = +d.Florida;	
-    d.Georgia = +d.Georgia;	
-    d.Hawaii = +d.Hawaii;	
-    d.Idaho = +d.Idaho;	
-    d.Illinois = +d.Illinois;	
-    d.Indiana = +d.Indiana;	
-    d.Iowa = +d.Iowa;	
-    d.Kansas = +d.Kansas;	
-    d.Kentucky = +d.Kentucky;	
-    d.Louisiana = +d.Louisiana;	
-    d.Maine = +d.Maine;	
-    d.Maryland = +d.Maryland;	
-    d.Massachusetts	= +d.Massachusetts;
-    d.Michigan = +d.Michigan;	
-    d.Minnesota = +d.Minnesota;	
-    d.Mississippi = +d.Mississippi;	
-    d.Missouri = +d.Missouri;	
-    d.Montana = +d.Montana;	
-    d.Nebraska = +d.Nebraska;	
-    d.Nevada = +d.Nevada;	
-    d.New_Hampshire = +d.New_Hampshire;	
-    d.New_Jersey = +d.New_Jersey;	
-    d.New_Mexico = +d.New_Mexico;	
-    d.New_York = +d.New_York;	
-    d.North_Carolina = +d.North_Carolina;	
-    d.North_Dakota = +d.North_Dakota;	
-    d.Ohio = +d.Ohio;	
-    d.Oklahoma = +d.Oklahoma;	
-    d.Oregon = +d.Oregon;	
-    d.Pennsylvania = +d.Pennsylvania;	
-    d.Rhode_Island = +d.Rhode_Island;	
-    d.South_Carolina = +d.South_Carolina;	
-    d.South_Dakota = +d.South_Dakota;	
-    d.Tennessee	= +d.Tennessee;
-    d.Texas	= +d.Texas;
-    d.Utah = +d.Utah;	
-    d.Vermont = +d.Vermont;	
-    d.Virginia = +d.Virginia;	
-    d.Washington = +d.Washington;	
-    d.West_Virginia = +d.West_Virginia;	
+    d.Alabama = +d.Alabama;
+    d.Alaska = +d.Alaska;
+    d.Arizona = +d.Arizona;
+    d.Arkansas = +d.Arkansas;
+    d.California = +d.California;
+    d.Colorado = +d.Colorado;
+    d.Connecticut = +d.Connecticut;
+    d.Delaware = +d.Delaware;
+    d.District_of_Columbia = +d.District_of_Columbia;
+    d.Florida = +d.Florida;
+    d.Georgia = +d.Georgia;
+    d.Hawaii = +d.Hawaii;
+    d.Idaho = +d.Idaho;
+    d.Illinois = +d.Illinois;
+    d.Indiana = +d.Indiana;
+    d.Iowa = +d.Iowa;
+    d.Kansas = +d.Kansas;
+    d.Kentucky = +d.Kentucky;
+    d.Louisiana = +d.Louisiana;
+    d.Maine = +d.Maine;
+    d.Maryland = +d.Maryland;
+    d.Massachusetts = +d.Massachusetts;
+    d.Michigan = +d.Michigan;
+    d.Minnesota = +d.Minnesota;
+    d.Mississippi = +d.Mississippi;
+    d.Missouri = +d.Missouri;
+    d.Montana = +d.Montana;
+    d.Nebraska = +d.Nebraska;
+    d.Nevada = +d.Nevada;
+    d.New_Hampshire = +d.New_Hampshire;
+    d.New_Jersey = +d.New_Jersey;
+    d.New_Mexico = +d.New_Mexico;
+    d.New_York = +d.New_York;
+    d.North_Carolina = +d.North_Carolina;
+    d.North_Dakota = +d.North_Dakota;
+    d.Ohio = +d.Ohio;
+    d.Oklahoma = +d.Oklahoma;
+    d.Oregon = +d.Oregon;
+    d.Pennsylvania = +d.Pennsylvania;
+    d.Rhode_Island = +d.Rhode_Island;
+    d.South_Carolina = +d.South_Carolina;
+    d.South_Dakota = +d.South_Dakota;
+    d.Tennessee = +d.Tennessee;
+    d.Texas = +d.Texas;
+    d.Utah = +d.Utah;
+    d.Vermont = +d.Vermont;
+    d.Virginia = +d.Virginia;
+    d.Washington = +d.Washington;
+    d.West_Virginia = +d.West_Virginia;
     d.Wisconsin = +d.Wisconsin;
-    d.Wyoming = +d.Wyoming;	
-  return d;
+    d.Wyoming = +d.Wyoming;
+    return d;
 }
 
 function totalCom(d) {
     strVale = state(d);
     sum = 0;
     arr = d.split(',');
-    for(i=0; i < arr.length; i++){
-    console.log(arr[i] + " = " + (arr[i]));
+    for (i = 0; i < arr.length; i++) {
+        console.log(arr[i] + " = " + (arr[i]));
         sum = sum + arr[i];
-        
+
     }
     return sum;
 }
@@ -206,6 +206,9 @@ d3.csv("datasetfor2012.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -303,6 +306,9 @@ d3.csv("datasetfor2014.csv", function (data) {
     color.domain([d3.min(data, function (d) {
             return d.value;
         })
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -394,10 +400,11 @@ d3.csv("datasetfor2014.csv", function (data) {
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
-     .range(["#f0f0f0", "#d9d9d9", "#bdbdbd", "#878787", "#4d4d4d", "#2a2a2a"]);
-    //.range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]);
+    .domain(["under 20", "20 - 29"])
+    .range(["#f0f0f0", "#d9d9d9", "#bdbdbd", "#878787", "#4d4d4d", "#2a2a2a"]);
+//.range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]);
 //["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", //"#b30000", "#7f0000"]
-var radius =100;
+var radius = 100;
 
 var arc = d3.svg.arc()
     .outerRadius(radius - 30)
@@ -440,19 +447,19 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         .enter().append("g")
         .attr("class", "arc")
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-     /*   .on("mouseover", function (d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function (d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            }) */
+    /*   .on("mouseover", function (d) {
+               tooltip.transition()
+                   .duration(200)
+                   .style("opacity", .9);
+               tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                   .style("left", (d3.event.pageX + 5) + "px")
+                   .style("top", (d3.event.pageY - 28) + "px");
+           })
+           .on("mouseout", function (d) {
+               tooltip.transition()
+                   .duration(500)
+                   .style("opacity", 0);
+           }) */
 
 
     g.append("path")
@@ -463,7 +470,21 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         .transition()
         .ease("spring")
         .duration(1000)
-        .attrTween("d", tweenPie);   
+        .attrTween("d", tweenPie);
+
+    var text = d3.selectAll('g.arc')
+        .append('text')
+        .data(pie(data))
+        .text(function (d, i) {
+            return d.data.age;
+        })
+        .attr('fill', 'white')
+        .attr('text-anchor', 'end')
+        .attr('transform', function (d, i) {
+            d.innerRadius = innerRadius;
+            d.outerRadius = outerRadius;
+            return 'translate(' + arc.centroid(d) + ')'
+        });
 });
 
 ///////////////////////////////// 2012 MALE PIE CHART ///////////////////////////////////////
@@ -478,19 +499,19 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         .enter().append("g")
         .attr("class", "arc")
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-  /*  .on("mouseover", function (d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function (d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            }) */
+    /*  .on("mouseover", function (d) {
+                  tooltip.transition()
+                      .duration(200)
+                      .style("opacity", .9);
+                  tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                      .style("left", (d3.event.pageX + 5) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px");
+              })
+              .on("mouseout", function (d) {
+                  tooltip.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+              }) */
 
 
     g.append("path")
@@ -518,19 +539,19 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         .enter().append("g")
         .attr("class", "arc")
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
- /*   .on("mouseover", function (d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function (d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            }) */
+    /*   .on("mouseover", function (d) {
+                   tooltip.transition()
+                       .duration(200)
+                       .style("opacity", .9);
+                   tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                       .style("left", (d3.event.pageX + 5) + "px")
+                       .style("top", (d3.event.pageY - 28) + "px");
+               })
+               .on("mouseout", function (d) {
+                   tooltip.transition()
+                       .duration(500)
+                       .style("opacity", 0);
+               }) */
 
 
     g.append("path")
@@ -556,19 +577,19 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         .enter().append("g")
         .attr("class", "arc")
         .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-  /*  .on("mouseover", function (d) {
-                tooltip.transition()
-                    .duration(200)
-                    .style("opacity", .9);
-                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                    .style("left", (d3.event.pageX + 5) + "px")
-                    .style("top", (d3.event.pageY - 28) + "px");
-            })
-            .on("mouseout", function (d) {
-                tooltip.transition()
-                    .duration(500)
-                    .style("opacity", 0);
-            }) */
+    /*  .on("mouseover", function (d) {
+                  tooltip.transition()
+                      .duration(200)
+                      .style("opacity", .9);
+                  tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                      .style("left", (d3.event.pageX + 5) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px");
+              })
+              .on("mouseout", function (d) {
+                  tooltip.transition()
+                      .duration(500)
+                      .style("opacity", 0);
+              }) */
 
 
     g.append("path")
