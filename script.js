@@ -47,6 +47,39 @@ function targetType(x) {
     }
 
 }
+
+function targetType2(x) {
+    target = x;
+
+    if (target == "M1") {
+        return (" ");
+    } else if (target == "M2") {
+        return ("20-29");
+    } else if (target == "M3") {
+        return ("30-39");
+    } else if (target == "M4") {
+        return ("40-49");
+    } else if (target == "M5") {
+        return ("50-59");
+    } else if (target == "M6") {
+        return ("60 & Over");
+    } else if (target == "F1") {
+        return (" ");
+    } else if (target == "F2") {
+        return ("20-29");
+    } else if (target == "F3") {
+        return ("30-39");
+    } else if (target == "F4") {
+        return ("40-49");
+    } else if (target == "F5") {
+        return ("50-59");
+    } else if (target == "F6") {
+        return ("60 & Over");
+    } else {
+        return ("Error");
+    }
+
+}
 // Created State select fucntion for pie charts
 function state(d) {
     d.Alabama = +d.Alabama;
@@ -400,10 +433,8 @@ d3.csv("datasetfor2014.csv", function (data) {
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
-    .domain(["under 20", "20 - 29"])
-    .range(["#f0f0f0", "#d9d9d9", "#bdbdbd", "#878787", "#4d4d4d", "#2a2a2a"]);
-//.range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]);
-//["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", //"#b30000", "#7f0000"]
+     .range(["#f7f7f7", "#d9d9d9", "#bdbdbd", "#969696", "#737373", "#525252"]);
+
 var radius = 100;
 
 var arc = d3.svg.arc()
@@ -471,20 +502,19 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         .ease("spring")
         .duration(1000)
         .attrTween("d", tweenPie);
+    
+    g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
+          //   return d.data.age;
+            return targetType2(d.data.age);
+          });
 
-    var text = d3.selectAll('g.arc')
-        .append('text')
-        .data(pie(data))
-        .text(function (d, i) {
-            return d.data.age;
-        })
-        .attr('fill', 'white')
-        .attr('text-anchor', 'end')
-        .attr('transform', function (d, i) {
-            d.innerRadius = innerRadius;
-            d.outerRadius = outerRadius;
-            return 'translate(' + arc.centroid(d) + ')'
-        });
+    
 });
 
 ///////////////////////////////// 2012 MALE PIE CHART ///////////////////////////////////////
@@ -523,6 +553,17 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         .ease("spring")
         .duration(1000)
         .attrTween("d", tweenPie);
+    
+    g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
+          //   return d.data.age;
+            return targetType2(d.data.age);
+          });
 
 });
 
@@ -563,6 +604,17 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         .ease("spring")
         .duration(1000)
         .attrTween("d", tweenPie);
+    
+    g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
+          //   return d.data.age;
+            return targetType2(d.data.age);
+          });
 
 });
 
@@ -601,6 +653,17 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         .ease("spring")
         .duration(1000)
         .attrTween("d", tweenPie);
+    
+    g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
+          //   return d.data.age;
+            return targetType2(d.data.age);
+          });
 });
 
 
