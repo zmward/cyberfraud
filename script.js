@@ -15,39 +15,6 @@ function niceNumber(x) {
 
 }
 //Taking M# or F# and giving correct age range
-function targetType(x) {
-    target = x;
-
-    if (target == "M1") {
-        return ("Males Under 20");
-    } else if (target == "M2") {
-        return ("Males 20-29");
-    } else if (target == "M3") {
-        return ("Males 30-39");
-    } else if (target == "M4") {
-        return ("Males 40-49");
-    } else if (target == "M5") {
-        return ("Males 50-59");
-    } else if (target == "M6") {
-        return ("Males 60 & Over");
-    } else if (target == "F1") {
-        return ("Females Under 20");
-    } else if (target == "F2") {
-        return ("Females 20-29");
-    } else if (target == "F3") {
-        return ("Females 30-39");
-    } else if (target == "F4") {
-        return ("Females 40-49");
-    } else if (target == "F5") {
-        return ("Females 50-59");
-    } else if (target == "F6") {
-        return ("Females 60 & Over");
-    } else {
-        return ("Error");
-    }
-
-}
-
 function targetType2(x) {
     target = x;
 
@@ -80,70 +47,103 @@ function targetType2(x) {
     }
 
 }
+
+function targetType(x) {
+    target = x;
+
+    if (target == "M1") {
+        return ("Males Under 20");
+    } else if (target == "M2") {
+        return ("Males 20-29");
+    } else if (target == "M3") {
+        return ("Males 30-39");
+    } else if (target == "M4") {
+        return ("Males 40-49");
+    } else if (target == "M5") {
+        return ("Males 50-59");
+    } else if (target == "M6") {
+        return ("Males 60 & Over");
+    } else if (target == "F1") {
+        return ("Females Under 20");
+    } else if (target == "F2") {
+        return ("Females 20-29");
+    } else if (target == "F3") {
+        return ("Females 30-39");
+    } else if (target == "F4") {
+        return ("Females 40-49");
+    } else if (target == "F5") {
+        return ("Females 50-59");
+    } else if (target == "F6") {
+        return ("Females 60 & Over");
+    } else {
+        return ("Error");
+    }
+
+}
 // Created State select fucntion for pie charts
 function state(d) {
-    d.Alabama = +d.Alabama;
-    d.Alaska = +d.Alaska;
-    d.Arizona = +d.Arizona;
-    d.Arkansas = +d.Arkansas;
-    d.California = +d.California;
-    d.Colorado = +d.Colorado;
-    d.Connecticut = +d.Connecticut;
-    d.Delaware = +d.Delaware;
-    d.District_of_Columbia = +d.District_of_Columbia;
-    d.Florida = +d.Florida;
-    d.Georgia = +d.Georgia;
-    d.Hawaii = +d.Hawaii;
-    d.Idaho = +d.Idaho;
-    d.Illinois = +d.Illinois;
-    d.Indiana = +d.Indiana;
-    d.Iowa = +d.Iowa;
-    d.Kansas = +d.Kansas;
-    d.Kentucky = +d.Kentucky;
-    d.Louisiana = +d.Louisiana;
-    d.Maine = +d.Maine;
-    d.Maryland = +d.Maryland;
-    d.Massachusetts = +d.Massachusetts;
-    d.Michigan = +d.Michigan;
-    d.Minnesota = +d.Minnesota;
-    d.Mississippi = +d.Mississippi;
-    d.Missouri = +d.Missouri;
-    d.Montana = +d.Montana;
-    d.Nebraska = +d.Nebraska;
-    d.Nevada = +d.Nevada;
-    d.New_Hampshire = +d.New_Hampshire;
-    d.New_Jersey = +d.New_Jersey;
-    d.New_Mexico = +d.New_Mexico;
-    d.New_York = +d.New_York;
-    d.North_Carolina = +d.North_Carolina;
-    d.North_Dakota = +d.North_Dakota;
-    d.Ohio = +d.Ohio;
-    d.Oklahoma = +d.Oklahoma;
-    d.Oregon = +d.Oregon;
-    d.Pennsylvania = +d.Pennsylvania;
-    d.Rhode_Island = +d.Rhode_Island;
-    d.South_Carolina = +d.South_Carolina;
-    d.South_Dakota = +d.South_Dakota;
-    d.Tennessee = +d.Tennessee;
-    d.Texas = +d.Texas;
-    d.Utah = +d.Utah;
-    d.Vermont = +d.Vermont;
-    d.Virginia = +d.Virginia;
-    d.Washington = +d.Washington;
-    d.West_Virginia = +d.West_Virginia;
+    d.Alabama = +d.Alabama;	
+    d.Alaska = +d.Alaska;	
+    d.Arizona = +d.Arizona;	
+    d.Arkansas = +d.Arkansas;	
+    d.California = +d.California;	
+    d.Colorado = +d.Colorado;	
+    d.Connecticut = +d.Connecticut;	
+    d.Delaware = +d.Delaware;	
+    d.District_of_Columbia = +d.District_of_Columbia;	
+    d.Florida = +d.Florida;	
+    d.Georgia = +d.Georgia;	
+    d.Hawaii = +d.Hawaii;	
+    d.Idaho = +d.Idaho;	
+    d.Illinois = +d.Illinois;	
+    d.Indiana = +d.Indiana;	
+    d.Iowa = +d.Iowa;	
+    d.Kansas = +d.Kansas;	
+    d.Kentucky = +d.Kentucky;	
+    d.Louisiana = +d.Louisiana;	
+    d.Maine = +d.Maine;	
+    d.Maryland = +d.Maryland;	
+    d.Massachusetts	= +d.Massachusetts;
+    d.Michigan = +d.Michigan;	
+    d.Minnesota = +d.Minnesota;	
+    d.Mississippi = +d.Mississippi;	
+    d.Missouri = +d.Missouri;	
+    d.Montana = +d.Montana;	
+    d.Nebraska = +d.Nebraska;	
+    d.Nevada = +d.Nevada;	
+    d.New_Hampshire = +d.New_Hampshire;	
+    d.New_Jersey = +d.New_Jersey;	
+    d.New_Mexico = +d.New_Mexico;	
+    d.New_York = +d.New_York;	
+    d.North_Carolina = +d.North_Carolina;	
+    d.North_Dakota = +d.North_Dakota;	
+    d.Ohio = +d.Ohio;	
+    d.Oklahoma = +d.Oklahoma;	
+    d.Oregon = +d.Oregon;	
+    d.Pennsylvania = +d.Pennsylvania;	
+    d.Rhode_Island = +d.Rhode_Island;	
+    d.South_Carolina = +d.South_Carolina;	
+    d.South_Dakota = +d.South_Dakota;	
+    d.Tennessee	= +d.Tennessee;
+    d.Texas	= +d.Texas;
+    d.Utah = +d.Utah;	
+    d.Vermont = +d.Vermont;	
+    d.Virginia = +d.Virginia;	
+    d.Washington = +d.Washington;	
+    d.West_Virginia = +d.West_Virginia;	
     d.Wisconsin = +d.Wisconsin;
-    d.Wyoming = +d.Wyoming;
-    return d;
+    d.Wyoming = +d.Wyoming;	
+  return d;
 }
 
 function totalCom(d) {
     strVale = state(d);
     sum = 0;
     arr = d.split(',');
-    for (i = 0; i < arr.length; i++) {
-        console.log(arr[i] + " = " + (arr[i]));
+    for(i=0; i < arr.length; i++){
+    console.log(arr[i] + " = " + (arr[i]));
         sum = sum + arr[i];
-
+        
     }
     return sum;
 }
@@ -239,9 +239,6 @@ d3.csv("datasetfor2012.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
-
-
-
         
         , d3.max(data, function (d) {
             return d.value;
@@ -323,12 +320,115 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
+            
+                svg3.selectAll("*")
+                .remove();
+                svg4.selectAll("*")
+                .remove();
+            
+                nameS = state(d.properties.state);
+                console.log(nameS);
+                d3.csv("datasetfor2012male.csv", type, function (error, data) {
+    if (error) throw error;
+                     var filteredData = data.filter(function(d) {
+                         return data.map(x=> x[nameS]);
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
+                      
+                    
+    var g = svg4.selectAll(".arc")
+        .data(pie(filteredData))//why is use old Data??????
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("bounce")
+        .duration(2000)
+        .attrTween("d", tweenPie);
+        
+        g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
+          //   return d.data.age;
+            return targetType2(d.data.age);
+          });
+
+});
+            
+            d3.csv("datasetfor2012female.csv", type, function (error, data) {
+    if (error) throw error;
+            var filteredData = data.filter(function(d) {
+                         return data.map(x=> x[nameS]);
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
+
+
+    var g = svg3.selectAll(".arc")
+        .data(pie(filteredData))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+       
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("bounce")
+        .duration(2000)
+        .attrTween("d", tweenPie); 
+        
+        g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
+          //   return d.data.age;
+            return targetType2(d.data.age);
+          });
+});    
             })
             .on("mouseout", function (d) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
+            
+                svg3.selectAll("*")
+                .remove();
+                svg4.selectAll("*")
+                .remove();
+            
+            
+            
+            
             });
+        
+        
+        
+        
+        
+        
     });
 
 });
@@ -339,9 +439,6 @@ d3.csv("datasetfor2014.csv", function (data) {
     color.domain([d3.min(data, function (d) {
             return d.value;
         })
-
-
-
         
         , d3.max(data, function (d) {
             return d.value;
@@ -419,11 +516,104 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
-            })
+            
+            svg5.selectAll("*")
+                .remove();
+                svg6.selectAll("*")
+                .remove();
+            
+                nameS = state(d.properties.state);
+                console.log(nameS);
+                d3.csv("datasetfor2014male.csv", type, function (error, data) {
+    if (error) throw error;
+                     var filteredData = data.filter(function(d) {
+                         return data.map(x=> x[nameS]);
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
+                      
+                    
+    var g = svg5.selectAll(".arc")
+        .data(pie(filteredData))//why is use old Data??????
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("bounce")
+        .duration(2000)
+        .attrTween("d", tweenPie);
+        
+        g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
+          //   return d.data.age;
+            return targetType2(d.data.age);
+          });
+
+});
+            
+            d3.csv("datasetfor2014female.csv", type, function (error, data) {
+    if (error) throw error;
+            var filteredData = data.filter(function(d) {
+                         return data.map(x=> x[nameS]);
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
+
+
+    var g = svg6.selectAll(".arc")
+        .data(pie(filteredData))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+        
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("bounce")
+        .duration(2000)
+        .attrTween("d", tweenPie); 
+        
+        g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
+          //   return d.data.age;
+            return targetType2(d.data.age);
+          });
+});  
+            })  
             .on("mouseout", function (d) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
+            svg5.selectAll("*")
+                .remove();
+                svg6.selectAll("*")
+                .remove();
+               
             });
 
     });
@@ -433,9 +623,11 @@ d3.csv("datasetfor2014.csv", function (data) {
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
-     .range(["#f7f7f7", "#d9d9d9", "#bdbdbd", "#969696", "#737373", "#525252"]);
-
-var radius = 100;
+     //.range(["#f0f0f0", "#d9d9d9", "#bdbdbd", "#878787", "#4d4d4d", "#2a2a2a"]);
+     .range(["#f1eef6", "#d0d1e6", "#a6bddb", "#74a9cf", "#2b8cbe", "#045a8d"]);
+    //.range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]); 
+//["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", //"#b30000", "#7f0000"]
+var radius =100;
 
 var arc = d3.svg.arc()
     .outerRadius(radius - 30)
@@ -469,202 +661,6 @@ function tweenPie(b) {
     };
 }
 
-d3.csv("datasetfor2012female.csv", type, function (error, data) {
-    if (error) throw error;
-
-
-    var g = svg3.selectAll(".arc")
-        .data(pie(data))
-        .enter().append("g")
-        .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-    /*   .on("mouseover", function (d) {
-               tooltip.transition()
-                   .duration(200)
-                   .style("opacity", .9);
-               tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                   .style("left", (d3.event.pageX + 5) + "px")
-                   .style("top", (d3.event.pageY - 28) + "px");
-           })
-           .on("mouseout", function (d) {
-               tooltip.transition()
-                   .duration(500)
-                   .style("opacity", 0);
-           }) */
-
-
-    g.append("path")
-        .attr("d", arc)
-        .style("fill", function (d) {
-            return color1(d.data.age);
-        })
-        .transition()
-        .ease("spring")
-        .duration(1000)
-        .attrTween("d", tweenPie);
-    
-    g.append("text")
-         .attr("transform", function (d) {
-             return "translate(" + labelArc.centroid(d) + ")";
-         })
-          .attr("dy", ".35em")
-          .text(function (d) {
-           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-          //   return d.data.age;
-            return targetType2(d.data.age);
-          });
-
-    
-});
-
-///////////////////////////////// 2012 MALE PIE CHART ///////////////////////////////////////
-
-
-d3.csv("datasetfor2012male.csv", type, function (error, data) {
-    if (error) throw error;
-
-
-    var g = svg4.selectAll(".arc")
-        .data(pie(data))
-        .enter().append("g")
-        .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-    /*  .on("mouseover", function (d) {
-                  tooltip.transition()
-                      .duration(200)
-                      .style("opacity", .9);
-                  tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                      .style("left", (d3.event.pageX + 5) + "px")
-                      .style("top", (d3.event.pageY - 28) + "px");
-              })
-              .on("mouseout", function (d) {
-                  tooltip.transition()
-                      .duration(500)
-                      .style("opacity", 0);
-              }) */
-
-
-    g.append("path")
-        .attr("d", arc)
-        .style("fill", function (d) {
-            return color1(d.data.age);
-        })
-        .transition()
-        .ease("spring")
-        .duration(1000)
-        .attrTween("d", tweenPie);
-    
-    g.append("text")
-         .attr("transform", function (d) {
-             return "translate(" + labelArc.centroid(d) + ")";
-         })
-          .attr("dy", ".35em")
-          .text(function (d) {
-           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-          //   return d.data.age;
-            return targetType2(d.data.age);
-          });
-
-});
-
-
-///////////////////////////////// 2014 FEMALE PIE CHART ///////////////////////////////////////
-
-
-d3.csv("datasetfor2014female.csv", type, function (error, data) {
-    if (error) throw error;
-
-
-    var g = svg5.selectAll(".arc")
-        .data(pie(data))
-        .enter().append("g")
-        .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-    /*   .on("mouseover", function (d) {
-                   tooltip.transition()
-                       .duration(200)
-                       .style("opacity", .9);
-                   tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                       .style("left", (d3.event.pageX + 5) + "px")
-                       .style("top", (d3.event.pageY - 28) + "px");
-               })
-               .on("mouseout", function (d) {
-                   tooltip.transition()
-                       .duration(500)
-                       .style("opacity", 0);
-               }) */
-
-
-    g.append("path")
-        .attr("d", arc)
-        .style("fill", function (d) {
-            return color1(d.data.age);
-        })
-        .transition()
-        .ease("spring")
-        .duration(1000)
-        .attrTween("d", tweenPie);
-    
-    g.append("text")
-         .attr("transform", function (d) {
-             return "translate(" + labelArc.centroid(d) + ")";
-         })
-          .attr("dy", ".35em")
-          .text(function (d) {
-           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-          //   return d.data.age;
-            return targetType2(d.data.age);
-          });
-
-});
-
-///////////////////////////////// 2014 MALE PIE CHART ///////////////////////////////////////
-
-d3.csv("datasetfor2014male.csv", type, function (error, data) {
-    if (error) throw error;
-
-
-    var g = svg6.selectAll(".arc")
-        .data(pie(data))
-        .enter().append("g")
-        .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
-    /*  .on("mouseover", function (d) {
-                  tooltip.transition()
-                      .duration(200)
-                      .style("opacity", .9);
-                  tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
-                      .style("left", (d3.event.pageX + 5) + "px")
-                      .style("top", (d3.event.pageY - 28) + "px");
-              })
-              .on("mouseout", function (d) {
-                  tooltip.transition()
-                      .duration(500)
-                      .style("opacity", 0);
-              }) */
-
-
-    g.append("path")
-        .attr("d", arc)
-        .style("fill", function (d) {
-            return color1(d.data.age);
-        })
-        .transition()
-        .ease("spring")
-        .duration(1000)
-        .attrTween("d", tweenPie);
-    
-    g.append("text")
-         .attr("transform", function (d) {
-             return "translate(" + labelArc.centroid(d) + ")";
-         })
-          .attr("dy", ".35em")
-          .text(function (d) {
-           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-          //   return d.data.age;
-            return targetType2(d.data.age);
-          });
-});
 
 
 //legend for maps
