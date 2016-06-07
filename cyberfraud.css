@@ -20,14 +20,14 @@
 }
 #section1 {
     
-    height:600px;
+    height:500px;
     width:630px;
     float:left;
     background-color:white;
 }
 
 #section2 {
-    height:600px;
+    height:500px;
     width:530px;
     float:left; 
     background-color:white;
@@ -57,46 +57,33 @@
 }
 
 #section311 {
-    height:200px;
+    height:100px;
     width:275px;
     background-color:white;
     float: left
 }
 
 #section312 {
-    height:200px;
+    height:100px;
     width:275px;
     background-color:white;
     float:left
 }
 
-#section313 {
-    height:200px;
-    width:60px;
-    background-color:white;
-    float:right
-}
 #section321 {
-    height:200px;
+    height:100px;
     width:265px;
     background-color:white;
     float: left
 }
 
 #section322 {
-    height:200px;
+    height:100px;
     width:265px;
     background-color:white;
     float:right
 }
 
-#section7 {
-    padding:10px;
-    background-color:white;
-    text-align:center;
-    width:1200px;
-    float: left
-}
 
 #section6 {
     padding:10px;
