@@ -2,6 +2,7 @@
     background-color:white;
     color:white;
     text-align:center;
+    width: 1180px;
 }
 #header2 {
     background-color:white;
@@ -28,7 +29,7 @@
 #section2 {
     height:600px;
     width:530px;
-    float:right; 
+    float:left; 
     background-color:white;
     text-align:center;
 }
