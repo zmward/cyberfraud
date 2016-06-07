@@ -103,6 +103,17 @@ function state(d) {
   return d;
 }
 
+function totalCom(d) {
+    strVale = state(d);
+    sum = 0;
+    arr = d.split(',');
+    for(i=0; i < arr.length; i++){
+    console.log(arr[i] + " = " + (arr[i]));
+        sum = sum + arr[i];
+        
+    }
+    return sum;
+}
 
 //Define map projection
 var projection = d3.geo.albersUsa()
@@ -273,7 +284,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(0)
                     .style("opacity", .9);
-                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center><br>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
+                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -302,18 +313,18 @@ d3.csv("datasetfor2012.csv", function (data) {
     .value(function (d) {
         return d[nameS];
     });
-                      
+     
                     
     var g = svg4.selectAll(".arc")
         .data(pie(filteredData))//why is use old Data??????
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
-    .on("mouseover", function (d) {
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
+/*    .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + "% " )
+                tooltip.html("<center>" + targetType(d.data.age) + "</center><br>" + data.map(x=> x[nameS]) + "% " )
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -321,7 +332,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
+            }) */
 
 
     g.append("path")
@@ -352,8 +363,8 @@ d3.csv("datasetfor2012.csv", function (data) {
         .data(pie(filteredData))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
-        .on("mouseover", function (d) {
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
+/*        .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -365,7 +376,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
+            }) */
 
 
     g.append("path")
@@ -463,7 +474,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center><br>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
+                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             })
@@ -494,8 +505,8 @@ d3.csv("datasetfor2014.csv", function (data) {
         .data(pie(filteredData))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
-    .on("mouseover", function (d) {
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
+/*    .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -507,7 +518,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
+            }) */
 
 
     g.append("path")
@@ -537,8 +548,8 @@ d3.csv("datasetfor2014.csv", function (data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
-    .on("mouseover", function (d) {
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
+ /*   .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -550,7 +561,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
+            }) */
 
 
     g.append("path")
@@ -618,8 +629,8 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
-        .on("mouseover", function (d) {
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
+     /*   .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -631,7 +642,7 @@ d3.csv("datasetfor2012female.csv", type, function (error, data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
+            }) */
 
 
     g.append("path")
@@ -656,8 +667,8 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
-    .on("mouseover", function (d) {
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
+  /*  .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -669,7 +680,7 @@ d3.csv("datasetfor2012male.csv", type, function (error, data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
+            }) */
 
 
     g.append("path")
@@ -696,8 +707,8 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
-    .on("mouseover", function (d) {
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
+ /*   .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -709,7 +720,7 @@ d3.csv("datasetfor2014female.csv", type, function (error, data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
+            }) */
 
 
     g.append("path")
@@ -734,8 +745,8 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
         .data(pie(data))
         .enter().append("g")
         .attr("class", "arc")
-        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
-    .on("mouseover", function (d) {
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")");
+  /*  .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
@@ -747,7 +758,7 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            })
+            }) */
 
 
     g.append("path")
@@ -764,7 +775,7 @@ d3.csv("datasetfor2014male.csv", type, function (error, data) {
 
 //legend for maps
 var map_col = ["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"];
-var map_numb = ["$500-$1125", "$1126-$1751", "$1752-$2377", "$2378-$3003", "$3004-$3629", "  > $3630"];
+var map_numb = ["$500-$1100", "$1100-$1700", "$1700-$2300", "$2300-$3000", "$3000-$3600", "  > $3600"];
 
 //legend creation attached to the svg
 var legend = svg7.selectAll(".legend")
