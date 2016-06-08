@@ -142,7 +142,8 @@ function totalCom(d) {
     arr = d.split(',');
     for(i=0; i < arr.length; i++){
     console.log(arr[i] + " = " + (arr[i]));
-        sum = sum + arr[i];       
+        sum = sum + arr[i];
+        
     }
     return sum;
 }
@@ -243,51 +244,57 @@ var tooltip = d3.select("body").append("div")
     .style("box-shadow", "4px 4px 10px rgba(0, 0, 0, 0.4)")
     .style("pointer-events", "none");
    
-//state 2012
+  
+
+    
+//left pie charts
+
 var tooltip2 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 240 + "px")     
-    .style("top", 480 + "px")
+    .style("top", 550 + "px")
     .style("opacity", 0)
     .style("width", 150)
     .style("height", 30);
 
-//female 2012
 var tooltip3 = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .style("left", 50 + "px")     
+    .style("left", 22 + "px")     
     .style("top", 640 + "px")
     .style("opacity", 0);
 
-//male 2012
 var tooltip4 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 300 + "px")     
     .style("top", 640 + "px")
     .style("opacity", 0);
 
-//state 2014
+//right pie charts
+
 var tooltip5 = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .style("left", 870 + "px")     
-    .style("top", 480 + "px")
+    .style("left", 865 + "px")     
+    .style("top", 550 + "px")
     .style("opacity", 0)
     .style("width", 150)
     .style("height", 30);
 
-//female 2014
 var tooltip6 = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .style("left", 680 + "px")     
+    .style("left", 650 + "px")     
     .style("top", 640 + "px")
     .style("opacity", 0);
 
-//male 2014
 var tooltip7 = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .style("left", 930 + "px")     
+    .style("left", 920 + "px")     
     .style("top", 640 + "px")
     .style("opacity", 0);
+
+
+//------------------------------------------------------------------
+// 2012 Map and pie charts
+//------------------------------------------------------------------
 
 d3.csv("datasetfor2012.csv", function (data) {
 
@@ -369,7 +376,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 }
             })
 
-
+        // Creating Mouseovr fuctionality  
         .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(0)
@@ -388,6 +395,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 .style("width", 150)
                 .style("height", 30);
                     
+            
                 tooltip3.transition()
                     .duration(0)
                     .style("opacity", .9);
@@ -411,83 +419,85 @@ d3.csv("datasetfor2012.csv", function (data) {
                 .remove();
             
                 nameS = state(d.properties.state);
-            
-                d3.csv("datasetfor2012male.csv", type, function (error, data){
-                    if (error) throw error;
-                    var filteredData = data.filter(function(d) {
+                console.log(nameS);
+                d3.csv("datasetfor2012male.csv", type, function (error, data) {
+    if (error) throw error;
+                     var filteredData = data.filter(function(d) {
                          return data.map(x=> x[nameS]);
-                    });
-                var pie = d3.layout.pie()
-                .sort(null)
-                .value(function (d) {
-                return d[nameS];
-                });
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
                       
                     
-                var g = svg4.selectAll(".arc")
-                    .data(pie(filteredData))//why is use old Data??????
-                    .enter().append("g")
-                    .attr("class", "arc")
-                    .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    var g = svg4.selectAll(".arc")
+        .data(pie(filteredData))//why is use old Data??????
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
 
-                g.append("path")
-                .attr("d", arc)
-                .style("fill", function (d) {
-                    return color1(d.data.age);
-                    })
-                .transition()
-                .ease("bounce")
-                .duration(2000)
-                .attrTween("d", tweenPie);
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("bounce")
+        .duration(2000)
+        .attrTween("d", tweenPie);
         
-                g.append("text")
-                .attr("transform", function (d) {
-                    return "translate(" + labelArc.centroid(d) + ")";
-                    })
-                .attr("dy", ".35em")
-                .text(function (d) {
-                    return targetType2(d.data.age);
-                    });
+        g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           
+            return targetType2(d.data.age);
+          });
 
-                });
+});
             
-                d3.csv("datasetfor2012female.csv", type, function (error, data) {
-                    if (error) throw error;
-                    var filteredData = data.filter(function(d) {
+            d3.csv("datasetfor2012female.csv", type, function (error, data) {
+    if (error) throw error;
+            var filteredData = data.filter(function(d) {
                          return data.map(x=> x[nameS]);
-                    });
-                var pie = d3.layout.pie()
-                .sort(null)
-                .value(function (d) {
-                    return d[nameS];
-                });
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
 
 
-                var g = svg3.selectAll(".arc")
-                .data(pie(filteredData))
-                .enter().append("g")
-                .attr("class", "arc")
-                .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    var g = svg3.selectAll(".arc")
+        .data(pie(filteredData))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
        
-                g.append("path")
-                    .attr("d", arc)
-                    .style("fill", function (d) {
-                        return color1(d.data.age);
-                    })
-                    .transition()
-                    .ease("bounce")
-                    .duration(2000)
-                    .attrTween("d", tweenPie); 
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("bounce")
+        .duration(2000)
+        .attrTween("d", tweenPie); 
         
-                g.append("text")
-                    .attr("transform", function (d) {
-                        return "translate(" + labelArc.centroid(d) + ")";
-                    })
-                    .attr("dy", ".35em")
-                    .text(function (d) {
-                        return targetType2(d.data.age);
-                    });
-                });    
+        g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+           
+            return targetType2(d.data.age);
+          });
+});    
             })
             .on("mouseout", function (d) {
                 tooltip.transition()
@@ -512,6 +522,10 @@ d3.csv("datasetfor2012.csv", function (data) {
     });
 
 });
+
+//------------------------------------------------------------------
+// 2014 Map and pie charts
+//------------------------------------------------------------------
 
 d3.csv("datasetfor2014.csv", function (data) {
 
@@ -597,9 +611,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             
-            
-            
-                tooltip5.transition()
+             tooltip5.transition()
                     .duration(0)
                     .style("opacity", .9);
             
@@ -607,6 +619,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 .style("width", 150)
                 .style("height", 30);
                     
+            
                 tooltip6.transition()
                     .duration(0)
                     .style("opacity", .9);
@@ -622,97 +635,100 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip7.html("<center>"  + " Male" + "</center>" ) 
                     .style("width", 150)
                 .style("height", 30);
+                
+            
             
                 svg5.selectAll("*")
-                    .remove();
+                .remove();
                 svg6.selectAll("*")
-                    .remove();
+                .remove();
             
                 nameS = state(d.properties.state);
-                
+                console.log(nameS);
                 d3.csv("datasetfor2014male.csv", type, function (error, data) {
-                    if (error) throw error;
-                    var filteredData = data.filter(function(d) {
+    if (error) throw error;
+                     var filteredData = data.filter(function(d) {
                          return data.map(x=> x[nameS]);
-                    });
-                var pie = d3.layout.pie()
-                .sort(null)
-                .value(function (d) {
-                    return d[nameS];
-                });
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
                       
                     
-                var g = svg5.selectAll(".arc")
-                .data(pie(filteredData))//why is use old Data??????
-                .enter().append("g")
-                .attr("class", "arc")
-                .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    var g = svg5.selectAll(".arc")
+        .data(pie(filteredData))//why is use old Data??????
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
 
-                g.append("path")
-                    .attr("d", arc)
-                    .style("fill", function (d) {
-                        return color1(d.data.age);
-                    })
-                    .transition()
-                    .ease("bounce")
-                    .duration(2000)
-                    .attrTween("d", tweenPie);
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("bounce")
+        .duration(2000)
+        .attrTween("d", tweenPie);
         
-                g.append("text")
-                    .attr("transform", function (d) {
-                        return "translate(" + labelArc.centroid(d) + ")";
-                    })
-                    .attr("dy", ".35em")
-                    .text(function (d) {
-           
-                        return targetType2(d.data.age);
-                    });
+        g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+          
+            return targetType2(d.data.age);
+          });
 
-                });
+});
             
-                d3.csv("datasetfor2014female.csv", type, function (error, data) {
-                    if (error) throw error;
-                    var filteredData = data.filter(function(d) {
+            d3.csv("datasetfor2014female.csv", type, function (error, data) {
+    if (error) throw error;
+            var filteredData = data.filter(function(d) {
                          return data.map(x=> x[nameS]);
-                    });
-                var pie = d3.layout.pie()
-                .sort(null)
-                .value(function (d) {
-                    return d[nameS];
-                });
+  });
+    var pie = d3.layout.pie()
+    .sort(null)
+    .value(function (d) {
+        return d[nameS];
+    });
 
 
-                var g = svg6.selectAll(".arc")
-                .data(pie(filteredData))
-                .enter().append("g")
-                .attr("class", "arc")
-                .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
+    var g = svg6.selectAll(".arc")
+        .data(pie(filteredData))
+        .enter().append("g")
+        .attr("class", "arc")
+        .attr("transform", "translate(" + (radius + 30) + "," + (radius - 24) + ")")
         
-                g.append("path")
-                    .attr("d", arc)
-                    .style("fill", function (d) {
-                        return color1(d.data.age);
-                    })
-                    .transition()
-                    .ease("bounce")
-                    .duration(2000)
-                    .attrTween("d", tweenPie); 
+    g.append("path")
+        .attr("d", arc)
+        .style("fill", function (d) {
+            return color1(d.data.age);
+        })
+        .transition()
+        .ease("bounce")
+        .duration(2000)
+        .attrTween("d", tweenPie); 
         
-                g.append("text")
-                    .attr("transform", function (d) {
-                        return "translate(" + labelArc.centroid(d) + ")";
-                    })
-                    .attr("dy", ".35em")
-                    .text(function (d) {
-                        return targetType2(d.data.age);
-                    });
-                });  
+        g.append("text")
+         .attr("transform", function (d) {
+             return "translate(" + labelArc.centroid(d) + ")";
+         })
+          .attr("dy", ".35em")
+          .text(function (d) {
+          
+            return targetType2(d.data.age);
+          });
+});  
             })  
             .on("mouseout", function (d) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
-            tooltip5.transition()
+                tooltip5.transition()
                     .duration(100)
                     .style("opacity", 0);
                 tooltip6.transition()
@@ -721,11 +737,19 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip7.transition()
                     .duration(100)
                     .style("opacity", 0);
+            
+            
+            
+            
+            
+            
             svg5.selectAll("*")
                 .remove();
                 svg6.selectAll("*")
-                .remove();         
+                .remove();
+               
             });
+
     });
 
 });
@@ -733,7 +757,7 @@ d3.csv("datasetfor2014.csv", function (data) {
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
-     //.range(["#f0f0f0", "#d9d9d9", "#bdbdbd", "#878787", "#4d4d4d", "#2a2a2a"]);
+     
      .range(["#f1eef6", "#d0d1e6", "#a6bddb", "#74a9cf", "#2b8cbe", "#045a8d"]);
     
 var radius =100;
@@ -752,10 +776,12 @@ var pie = d3.layout.pie()
         return d.total;
     });
 
+
 function type(d) {
     d.total = +d.total;
     return d;
 }
+
 
 function tweenPie(b) {
     b.innerRadius = 0;
@@ -767,6 +793,7 @@ function tweenPie(b) {
         return arc(i(t));
     };
 }
+
 
 
 //legend for maps
