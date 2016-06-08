@@ -14,39 +14,6 @@ function niceNumber(x) {
     return twoPlacedFloat;
 
 }
-
-function targetType3(x) {
-    target = x;
-
-    if (target == "M1") {
-        return ("Males");
-    } else if (target == "M2") {
-        return ("Males");
-    } else if (target == "M3") {
-        return ("Males");
-    } else if (target == "M4") {
-        return ("Males");
-    } else if (target == "M5") {
-        return ("Males");
-    } else if (target == "M6") {
-        return ("Males");
-    } else if (target == "F1") {
-        return ("Females");
-    } else if (target == "F2") {
-        return ("Females");
-    } else if (target == "F3") {
-        return ("Females");
-    } else if (target == "F4") {
-        return ("Females");
-    } else if (target == "F5") {
-        return ("Females");
-    } else if (target == "F6") {
-        return ("Females");
-    } else {
-        return ("Error");
-    }
-
-}
 //Taking M# or F# and giving correct age range
 function targetType2(x) {
     target = x;
@@ -399,19 +366,6 @@ d3.csv("datasetfor2012.csv", function (data) {
           //   return d.data.age;
             return targetType2(d.data.age);
           });
-          
-          g.append("text")
-        
-          .attr("dy", ".35em")
-            .attr("text-anchor", " inherit")
-          .text(function (d) {
-            return targetType3(d.data.age)
-            
-          })
-    
-    //.style("font-weight", "bold")
-    .style("font-size", "16");
-                    
 
 });
             
@@ -453,7 +407,6 @@ d3.csv("datasetfor2012.csv", function (data) {
           //   return d.data.age;
             return targetType2(d.data.age);
           });
-         // .style("font-size", "16");
 });    
             })
             .on("mouseout", function (d) {
@@ -609,7 +562,6 @@ d3.csv("datasetfor2014.csv", function (data) {
           //   return d.data.age;
             return targetType2(d.data.age);
           });
-         // .style("font-size", "16");
 
 });
             
@@ -651,7 +603,6 @@ d3.csv("datasetfor2014.csv", function (data) {
           //   return d.data.age;
             return targetType2(d.data.age);
           });
-          //.style("font-size", "16");
 });  
             })  
             .on("mouseout", function (d) {
