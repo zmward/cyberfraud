@@ -230,6 +230,43 @@ var svg8 = d3.select("#section313")
 //Define Tooltip
 var tooltip = d3.select("body").append("div")
     .attr("class", "tooltip")
+    .style("opacity", 0)
+     .style("width", 200)
+    .style("height", 60)
+    .style("padding", 5 + "px")
+    .style("position", "auto")
+    .style("background-color", "white")
+    .style("-webkit-border-radius", 10 + "px")
+    .style("-moz-border-radius", 10 + "px")
+    .style("border-radius", 10 + "px")
+    .style("-webkit-box-shadow", "4px 4px 10px rgba(0, 0, 0, 0.4)")
+    .style("-moz-box-shadow", "4px 4px 10px rgba(0, 0, 0, 0.4)")
+    .style("box-shadow", "4px 4px 10px rgba(0, 0, 0, 0.4)")
+    .style("pointer-events", "none");
+   
+  
+
+    
+
+
+var tooltip2 = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("left", 240 + "px")     
+    .style("top", 480 + "px")
+    .style("opacity", 0)
+    .style("width", 150)
+    .style("height", 30);
+
+var tooltip3 = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("left", 50 + "px")     
+    .style("top", 640 + "px")
+    .style("opacity", 0);
+
+var tooltip4 = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("left", 300 + "px")     
+    .style("top", 640 + "px")
     .style("opacity", 0);
 
 d3.csv("datasetfor2012.csv", function (data) {
@@ -317,9 +354,38 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(0)
                     .style("opacity", .9);
+            
                 tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
+            
+            
+                tooltip2.transition()
+                    .duration(0)
+                    .style("opacity", .9);
+            
+                tooltip2.html("<center>" + d.properties.state + "</center>" )
+                .style("width", 150)
+                .style("height", 30);
+                    //.style("left", (d3.event.pageX + 5) + "px")
+                    //.style("top", (d3.event.pageY - 28) + "px");
+            
+                tooltip3.transition()
+                    .duration(0)
+                    .style("opacity", .9);
+            
+                tooltip3.html("<center>" + "Female" + "</center>" )
+                    .style("width", 150)
+                .style("height", 30);
+            
+                tooltip4.transition()
+                    .duration(0)
+                    .style("opacity", .9);
+            
+                tooltip4.html("<center>"  + " Male" + "</center>" ) 
+                    .style("width", 150)
+                .style("height", 30);
+              
             
                 svg3.selectAll("*")
                 .remove();
@@ -413,22 +479,22 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
+                tooltip2.transition()
+                    .duration(100)
+                    .style("opacity", 0);
+                tooltip3.transition()
+                    .duration(100)
+                    .style("opacity", 0);
+                tooltip4.transition()
+                    .duration(100)
+                    .style("opacity", 0);
             
                 svg3.selectAll("*")
                 .remove();
                 svg4.selectAll("*")
                 .remove();
-            
-            
-            
-            
             });
-        
-        
-        
-        
-        
-        
+            
     });
 
 });
