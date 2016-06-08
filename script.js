@@ -247,19 +247,19 @@ var tooltip = d3.select("body").append("div")
   
 
     
-
+//left pie charts
 
 var tooltip2 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 240 + "px")     
-    .style("top", 480 + "px")
+    .style("top", 550 + "px")
     .style("opacity", 0)
     .style("width", 150)
     .style("height", 30);
 
 var tooltip3 = d3.select("body").append("div")
     .attr("class", "tooltip")
-    .style("left", 50 + "px")     
+    .style("left", 22 + "px")     
     .style("top", 640 + "px")
     .style("opacity", 0);
 
@@ -268,6 +268,33 @@ var tooltip4 = d3.select("body").append("div")
     .style("left", 300 + "px")     
     .style("top", 640 + "px")
     .style("opacity", 0);
+
+//right pie charts
+
+var tooltip5 = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("left", 865 + "px")     
+    .style("top", 550 + "px")
+    .style("opacity", 0)
+    .style("width", 150)
+    .style("height", 30);
+
+var tooltip6 = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("left", 650 + "px")     
+    .style("top", 640 + "px")
+    .style("opacity", 0);
+
+var tooltip7 = d3.select("body").append("div")
+    .attr("class", "tooltip")
+    .style("left", 920 + "px")     
+    .style("top", 640 + "px")
+    .style("opacity", 0);
+
+
+//------------------------------------------------------------------
+// 2012 Map and pie charts
+//------------------------------------------------------------------
 
 d3.csv("datasetfor2012.csv", function (data) {
 
@@ -349,7 +376,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 }
             })
 
-
+        // Creating Mouseovr fuctionality  
         .on("mouseover", function (d) {
                 tooltip.transition()
                     .duration(0)
@@ -367,8 +394,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip2.html("<center>" + d.properties.state + "</center>" )
                 .style("width", 150)
                 .style("height", 30);
-                    //.style("left", (d3.event.pageX + 5) + "px")
-                    //.style("top", (d3.event.pageY - 28) + "px");
+                    
             
                 tooltip3.transition()
                     .duration(0)
@@ -428,8 +454,7 @@ d3.csv("datasetfor2012.csv", function (data) {
          })
           .attr("dy", ".35em")
           .text(function (d) {
-           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-          //   return d.data.age;
+           
             return targetType2(d.data.age);
           });
 
@@ -469,8 +494,7 @@ d3.csv("datasetfor2012.csv", function (data) {
          })
           .attr("dy", ".35em")
           .text(function (d) {
-           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-          //   return d.data.age;
+           
             return targetType2(d.data.age);
           });
 });    
@@ -498,6 +522,10 @@ d3.csv("datasetfor2012.csv", function (data) {
     });
 
 });
+
+//------------------------------------------------------------------
+// 2014 Map and pie charts
+//------------------------------------------------------------------
 
 d3.csv("datasetfor2014.csv", function (data) {
 
@@ -583,7 +611,34 @@ d3.csv("datasetfor2014.csv", function (data) {
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
             
-            svg5.selectAll("*")
+             tooltip5.transition()
+                    .duration(0)
+                    .style("opacity", .9);
+            
+                tooltip5.html("<center>" + d.properties.state + "</center>" )
+                .style("width", 150)
+                .style("height", 30);
+                    
+            
+                tooltip6.transition()
+                    .duration(0)
+                    .style("opacity", .9);
+            
+                tooltip6.html("<center>" + "Female" + "</center>" )
+                    .style("width", 150)
+                .style("height", 30);
+            
+                tooltip7.transition()
+                    .duration(0)
+                    .style("opacity", .9);
+            
+                tooltip7.html("<center>"  + " Male" + "</center>" ) 
+                    .style("width", 150)
+                .style("height", 30);
+                
+            
+            
+                svg5.selectAll("*")
                 .remove();
                 svg6.selectAll("*")
                 .remove();
@@ -624,8 +679,7 @@ d3.csv("datasetfor2014.csv", function (data) {
          })
           .attr("dy", ".35em")
           .text(function (d) {
-           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-          //   return d.data.age;
+          
             return targetType2(d.data.age);
           });
 
@@ -665,8 +719,7 @@ d3.csv("datasetfor2014.csv", function (data) {
          })
           .attr("dy", ".35em")
           .text(function (d) {
-           //   return d.data.age + "   $" + numberWithCommas(d.data.total)
-          //   return d.data.age;
+          
             return targetType2(d.data.age);
           });
 });  
@@ -675,6 +728,21 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(500)
                     .style("opacity", 0);
+                tooltip5.transition()
+                    .duration(100)
+                    .style("opacity", 0);
+                tooltip6.transition()
+                    .duration(100)
+                    .style("opacity", 0);
+                tooltip7.transition()
+                    .duration(100)
+                    .style("opacity", 0);
+            
+            
+            
+            
+            
+            
             svg5.selectAll("*")
                 .remove();
                 svg6.selectAll("*")
@@ -689,10 +757,9 @@ d3.csv("datasetfor2014.csv", function (data) {
 ///////////////////////////////// 2012 FEMALE PIE CHART ///////////////////////////////////////
 
 var color1 = d3.scale.ordinal()
-     //.range(["#f0f0f0", "#d9d9d9", "#bdbdbd", "#878787", "#4d4d4d", "#2a2a2a"]);
+     
      .range(["#f1eef6", "#d0d1e6", "#a6bddb", "#74a9cf", "#2b8cbe", "#045a8d"]);
-    //.range(["#fef0d9", "#fdbb84", "#fc8d59", "#e34a33", "#b30000", "#7f0000"]); 
-//["#fff7ec", "#fee8c8", "#fdd49e", "#fdbb84", "#fc8d59", "#ef6548", "#d7301f", //"#b30000", "#7f0000"]
+    
 var radius =100;
 
 var arc = d3.svg.arc()
