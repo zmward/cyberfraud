@@ -453,7 +453,7 @@ d3.csv("datasetfor2012.csv", function (data) {
           //   return d.data.age;
             return targetType2(d.data.age);
           });
-          .style("font-size", "16");
+         // .style("font-size", "16");
 });    
             })
             .on("mouseout", function (d) {
