@@ -254,26 +254,26 @@ var tooltip = d3.select("body").append("div")
 var tooltip2 = d3.select("body").append("div")
     .attr("class", "tooltip")
 
-    .style("left", 240 + "px")     
-   .style("top", 550 + "px")
-
-
-
-    .style("left", 240 + "px")
+.style("left", 240 + "px")
     .style("top", 550 + "px")
 
-    .style("opacity", 0)
+
+
+.style("left", 240 + "px")
+    .style("top", 550 + "px")
+
+.style("opacity", 0)
     .style("width", 150)
 
 .style("font-weight", "bold")
-//.style("font-size", 24)
+    //.style("font-size", 24)
     .style("height", 30);
 
 var tooltip3 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 22 + "px")
     .style("top", 640 + "px")
-    
+
 .style("font-weight", "bold")
     .style("opacity", 0);
 
@@ -325,6 +325,15 @@ d3.csv("datasetfor2012.csv", function (data) {
 					d3.min(data, function (d) {
             return d.value;
         })
+
+
+
+
+
+
+
+
+
 
 
 
@@ -423,7 +432,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                     .duration(0)
                     .style("opacity", .9);
 
-                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
+                tooltip.html("<center>" + d.properties.state + "<br> Total Loss: $" + niceNumber(d.properties.value) + " Million" + "</center>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
 
@@ -432,14 +441,14 @@ d3.csv("datasetfor2012.csv", function (data) {
                     .duration(0)
                     .style("opacity", .9);
 
-            
-                tooltip2.html("<center>" + d.properties.state + "</center>" )
-                
-                .style("width", 150)
-                .style("height", 30);
-            
 
-            
+                tooltip2.html("<center>" + d.properties.state + "</center>")
+
+                .style("width", 150)
+                    .style("height", 30);
+
+
+
 
 
                 tooltip2.html("<center>" + d.properties.state + "</center>")
@@ -602,6 +611,15 @@ d3.csv("datasetfor2014.csv", function (data) {
 
 
 
+
+
+
+
+
+
+
+
+
         
         , d3.max(data, function (d) {
             return d.value;
@@ -679,7 +697,7 @@ d3.csv("datasetfor2014.csv", function (data) {
                 tooltip.transition()
                     .duration(200)
                     .style("opacity", .9);
-                tooltip.html("<center>" + d.properties.state + " $" + niceNumber(d.properties.value) + " Million" + "</center>" + "<span style='float:left;'>" + "Main Target: " + "</span>" + "<span style='float:right;'>" + targetType(d.properties.MainTarget) + "</span><br>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
+                tooltip.html("<center>" + d.properties.state + "<br> Total Loss: $" + niceNumber(d.properties.value) + " Million" + "</center>" + "<span style='float:left;'>" + "Loss per capita: " + "</span>" + "<span style='float:right;'>" + "$" + (d.properties.value / d.properties.total_complaints).toFixed(2) + "</span>")
                     .style("left", (d3.event.pageX + 5) + "px")
                     .style("top", (d3.event.pageY - 28) + "px");
 
