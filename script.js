@@ -233,6 +233,8 @@ var tooltip = d3.select("body").append("div")
     .style("opacity", 0)
      .style("width", 200)
     .style("height", 60)
+
+.style("font-weight", "bold")
     .style("padding", 5 + "px")
     .style("position", "auto")
     .style("background-color", "white")
@@ -252,21 +254,30 @@ var tooltip = d3.select("body").append("div")
 var tooltip2 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 240 + "px")     
-    .style("top", 550 + "px")
+   .style("top", 550 + "px")
+
+
     .style("opacity", 0)
     .style("width", 150)
+
+.style("font-weight", "bold")
+//.style("font-size", 24)
     .style("height", 30);
 
 var tooltip3 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 22 + "px")     
     .style("top", 640 + "px")
+    
+.style("font-weight", "bold")
     .style("opacity", 0);
 
 var tooltip4 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 300 + "px")     
     .style("top", 640 + "px")
+
+.style("font-weight", "bold")
     .style("opacity", 0);
 
 //right pie charts
@@ -275,6 +286,8 @@ var tooltip5 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 865 + "px")     
     .style("top", 550 + "px")
+
+.style("font-weight", "bold")
     .style("opacity", 0)
     .style("width", 150)
     .style("height", 30);
@@ -283,12 +296,16 @@ var tooltip6 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 650 + "px")     
     .style("top", 640 + "px")
+
+.style("font-weight", "bold")
     .style("opacity", 0);
 
 var tooltip7 = d3.select("body").append("div")
     .attr("class", "tooltip")
     .style("left", 920 + "px")     
     .style("top", 640 + "px")
+
+.style("font-weight", "bold")
     .style("opacity", 0);
 
 
@@ -392,9 +409,11 @@ d3.csv("datasetfor2012.csv", function (data) {
                     .style("opacity", .9);
             
                 tooltip2.html("<center>" + d.properties.state + "</center>" )
+                
                 .style("width", 150)
                 .style("height", 30);
-                    
+            
+
             
                 tooltip3.transition()
                     .duration(0)
