@@ -253,15 +253,15 @@ var tooltip = d3.select("body").append("div")
 
 var tooltip2 = d3.select("body").append("div")
     .attr("class", "tooltip")
-<<<<<<< HEAD
+
     .style("left", 240 + "px")     
    .style("top", 550 + "px")
 
 
-=======
+
     .style("left", 240 + "px")
     .style("top", 550 + "px")
->>>>>>> origin/gh-pages
+
     .style("opacity", 0)
     .style("width", 150)
 
@@ -431,7 +431,7 @@ d3.csv("datasetfor2012.csv", function (data) {
                 tooltip2.transition()
                     .duration(0)
                     .style("opacity", .9);
-<<<<<<< HEAD
+
             
                 tooltip2.html("<center>" + d.properties.state + "</center>" )
                 
@@ -440,14 +440,14 @@ d3.csv("datasetfor2012.csv", function (data) {
             
 
             
-=======
+
 
                 tooltip2.html("<center>" + d.properties.state + "</center>")
                     .style("width", 150)
                     .style("height", 30);
 
 
->>>>>>> origin/gh-pages
+
                 tooltip3.transition()
                     .duration(0)
                     .style("opacity", .9);
